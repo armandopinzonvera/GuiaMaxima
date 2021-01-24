@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>AndGui</title>
+  <link rel="icon" type="image/x-icon" href="IMG/androide.png" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../css/styles.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary1 fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Map & Location</span>
+      <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_configuracion.html">Configuracion </a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_Git-Github.html">Git-GitHub</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_logicas.html">Logicas</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_fragments.html">Fragments</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_sqlite.html">SQLite</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_mapLocation.html">Map-Location</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_arquitectura.html">Arquitectura <span
+              class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_debugTest.html">Debug-test</a></li>
+         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="and_services.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Page Content-->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h2 class="my-4">Map - Location
+
+        </h2>
+
+        <!-- Blog Post -->
+        <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+        <!-- Blog Post -->
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <h2 class="card-title">Verificar GPS-on </h2>
+            <img class="card-img-top" src="IMG/LOCATION/gps3.png" alt="Card image cap">
+            <p class="card-text"> Este procedimiento consiste en un <i>if</i>, que verifica la disponibilidad de la
+              ubicación mediante <i>LocationManager</i>, en caso de no tenerla envía a un método que le pide al usuario
+              iniciar la ubicación a través del GPS. Este <i>if</i> se ubica en el método <i>onCreate</i> del activity
+              en donde queremos hacer la verificación, preferiblemente anterior al activity que lo emplea, </p>
+
+            <p class="card-text"> En el metodo onCreate colocamos el siguiente fragmento:<br>
+              <pre class="pre">  LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                     if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                     buildAlertMessageNoGps();
+                     }</pre>
+            </p>
+
+            <img class="card-img-top" src="IMG/LOCATION/gps1.png" alt="Card image cap">
+
+            <p class="card-text">Adicionalmente creamos un método (llamado: buildAlertMessageNoGps), el cual va a abrir
+              una ventana de alerta que le indica al usuario prender el GPS, mediante: <i>AlertDialog.Builder</i>;
+              tengamos presente que este método es llamado con el <i>”if”</i>en caso de no detectar datos de GPS</p>
+            <pre class="pre">    private void buildAlertMessageNoGps() {
+              final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+              builder.setMessage("Tu GPS Debe estar habilitado, quieres iniciarlo?")
+                      .setCancelable(false)
+                      .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                          public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                              startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                          }
+                      })
+                      .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                          public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                              dialog.cancel();
+                          }
+                      });
+              final AlertDialog alert = builder.create();
+              alert.show();
+            } </pre>
+
+            <img class="card-img-top" src="IMG/LOCATION/gps4.png" alt="Card image cap">
+
+          </div>
+          <div class="card-footer text-muted">
+            Publicado en Julio 28, 2020 by
+            <a href="https://armandopinzonvera.github.io/Portafolio2020/" target="blank">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+        <!-- 
+       *********************************************************
+       *********************************************************
+       *********************************************************
+   -->
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <h2 class="card-title">Tener ubicación </h2>
+
+            <p class="card-text"> Para obtener los datos de ubicación (latitud, longitud, altura, velocidad, precisión)
+              se deben seguir los siguientes pasos: </p>
+
+            </p>
+            <ol>
+              <li class="nav-item">
+                <a class="nav-link">Agregar librerías del gradle (google play service)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Permisos del manifest (ACCESS_COARSE_LOCATION)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Agregar objeto FusedLocationProviderClient,
+                  objeto LocationRequest y Se establecen propiedades del objeto LocationRequest
+                  (setInterval, setFastesInterval, setPriority </a>
+              </li>
+
+            </ol>
+
+            <p class="card-text">1. Para agregar la librería de <i>google play service - Location</i>, vamos a
+              File/Project Structure/Dependencies/ en la ventana de <i>All Dependencies</i> <b>+</b><br>
+              Entramos a <i>Library Dependency</i> y en el buscador de la primera ventana (Step 1.), colocamos: <b>
+                com.google.android.gms:play-services-location: </b>:<br>
+              Seleccionamos la última versión que nos indique en la ventana de abajo, le damos a <b>OK</b>, luego en la
+              ventana que sigue <b>Apply</b> y <b>OK</b>.</br>
+              Verificamos la adecuada inclucion, en el archivo gradle, en donde ahora se debe ver en el atributo de
+              dependecias: <i> implementation ' com.google.android.gms:play-services-location: 17.0.1'</i><br>
+              Cabe resaltar que en la presente foto también se observa la librería de <i>google-play</i>, la cual fue
+              agregada con antelación y por defecto no viene incluida en los poyectos, pero genera error, debido a que
+              ella incluye -location; por consiguiente solo se deja la libreria de services-location: 17.0.1
+            </p>
+
+            <img class="card-img-top" src="IMG/LOCATION/loc1.png" alt="Card image cap">
+            <p></p>
+            <img class="card-img-top" src="IMG/LOCATION/loc2.png" alt="Card image cap">
+            <p></p>
+            <img class="card-img-top" src="IMG/LOCATION/loc3.png" alt="Card image cap">
+            <p></p>
+            <img class="card-img-top" src="IMG/LOCATION/loc4.png" alt="Card image cap">
+            <p></p>
+            <img class="card-img-top" src="IMG/LOCATION/loc5.png" alt="Card image cap">
+
+            <p class="card-text">2. para agregar el permiso en el Manifest, basta con colocar tres líneas de atributos
+              <i>uses-permission</i>, para internet, coarse_location y fine_location; por fuera y siguiente al atributo
+              <i> manifest</i>.
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/loc6.png" alt="Card image cap">
+            <p></p>
+            <p class="card-text">3. ahora nos dirigimos al archivo .java en donde queremos obtener la ubicación y
+              colocamos el código. El cual está conformado por un bloque en donde declaramos una constante a la que
+              llamaremos: <b>PERMISSIONS_FINE_LOCATION = 99</b>, las variables <b>FusedLocationProviderClient</b> y
+              <b>LocationRequest</b> como variables generales; en la foto ademas se observa los enlaces con <TextView>
+                en donde se colocaran los valores obtenidos.</br>
+                Además en el método <i>onCreate()</i> inicializamos el objeto locationRequest, le declaramos las
+                propiedades: setInterval(), setFastesInterval(), setPriority() y hacemos llamado al método en donde
+                obtenemos los datos de ubicación(updateGps()), para crearlo posteriormente.
+
+            </p>
+            <pre class="pre">
+              TextView latitud, longitud;
+              FusedLocationProviderClient fusedLocationProviderClient;
+              LocationRequest locationRequest;
+          
+              @Override
+              protected void onCreate(Bundle savedInstanceState) {
+                  super.onCreate(savedInstanceState);
+                  setContentView(R.layout.activity_main);
+                  latitud = findViewById(R.id.latitud);
+                  longitud =findViewById(R.id.longitud);
+          
+                  locationRequest = new LocationRequest();
+                  locationRequest.setInterval(1000 * 30);
+                  locationRequest.setFastestInterval(1000 * 50);
+                  locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                  updateGPS();
+              }</pre>
+            <img class="card-img-top" src="IMG/LOCATION/loc7.png" alt="Card image cap">
+            <p></p>
+
+            <p></p>
+            <p class="card-text">4. En el método updateGPS() que recién creamos, inicializamos el objeto
+              <i>fusedLocationProviderClient</i> con <b>LocationServices</b> y declaramos un <b>if-else</b> que verifica
+              el permiso, en caso de ser afirmativo nos remite a otro método(con parámetros Location), que vamos a crear
+              y llamar: <i>updateUIValues(Location location)</i><br>
+              <b><i><u>Precaución: en el fragmento de código siguiente, etiquetas de mayor y menor que; fueron incluidas
+                    con asterisco para que pudieran ser interpretadas por el <i>HTML</i>; pero no hacen parte del
+                    codigo</u></i></b>
+            </p>
+            <pre class="pre">
+              private void updateGPS() {
+                fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<*Location*>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            updateUIValues(location);
+                        }
+                    });
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, PERMISSIONS_FINE_LOCATION);
+                    }
+                }
+            }
+              }</pre>
+            <img class="card-img-top" src="IMG/LOCATION/loc8.png" alt="Card image cap">
+            <p></p>
+            <p class="card-text">5. Desarrollamos el método (<i>updateUIValues(Location location)</i>) que es solicitado
+              desde el anterior; en donde obtenemos los valores de ubicación mediante los métodos: <b>getLatitude()</b>
+              y <b>getLongitude()</b>
+            </p>
+            <pre class="pre">
+            private void updateUIValues(Location location) {
+              latitud.setText(String.valueOf(location.getLatitude()));
+              longitud.setText(String.valueOf(location.getLongitude()));
+          }
+          </pre>
+            <img class="card-img-top" src="IMG/LOCATION/loc9.png" alt="Card image cap">
+
+
+
+
+          </div>
+
+
+          <div class="card-footer text-muted">
+            Publicado en Julio 29, 2020 by
+            <a href="https://armandopinzonvera.github.io/Portafolio2020/" target="blank">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+        <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+        <!-- Blog Post -->
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <h2 class="card-title">Habilitar API-KEY </h2>
+
+            <p class="card-text"> Para poder utilizar el <b>mapa</b> de google map en nuestra aplicación, es necesario
+              que le agregamos la <i>API-KEY</i> en el <b>manifest</b>, este valor lo tomamos de la página de <b>Google
+                Cloud Platform</b> <a target="blank"
+                href="https://console.cloud.google.com/home/dashboard?project=servicelocation-287623&hl=es">
+                https://console.cloud.google.com/home/dashboard?project=...</a> Además ese <i>API-KEY</i> se debe
+              activar para que permita ser usado</p>
+
+            <p class="card-text"> Creamos el proyecto en el Google Cloud Platform:<br>
+            </p>
+
+            <img class="card-img-top" src="IMG/LOCATION/key1.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Indicamos que es un nuevo proyecto, o podemos escoger uno existente:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key2.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Colocamos el nombre y click en crear:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key3.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Para crear la ApI, vamos a credenciales:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key4.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Para crear la API, vamos a credenciales:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key5.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Para crear la API, vamos a credenciales:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key5.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text"> Para iniciar la habilitacion de la API, vamos a Biblioteca:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key6.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text">vamos a Maps JavaScript API:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key7.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text">Se da click en habilitar:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key8.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+            <p class="card-text">Se habilita Maps SDK for Android y place API:<br>
+            </p>
+            <img class="card-img-top" src="IMG/LOCATION/key9.png" alt="Card image cap">
+            <p class="card-text"> </p>
+
+          </div>
+          <div class="card-footer text-muted">
+            Publicado en Agosto 26, 2020 by
+            <a href="https://armandopinzonvera.github.io/Portafolio2020/" target="blank">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+
+       <!--
+        *********************************************************
+        *********************************************************
+        *********************************************************
+        -->
+
+        <!-- Blog Post -->
+
+        <!-- Blog Post -->
+        <!--
+          <div class="card mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Post Title</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on January 1, 2020 by
+              <a href="#">Start Bootstrap</a>
+            </div>
+          </div>
+        -->
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="sqlite.html">&larr;Anterior</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="arquitectura.html">Siguiente &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Buscar</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="search" class="form-control" placeholder="En Android Developers...">
+              <span class="input-group-append">
+                <button class="btn btn-secondary" type="button">Ir!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Temas</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Verificar GPS-on</a>
+                  </li>
+                  <li>
+                    <a href="#">obtener Ubicación</a>
+                  </li>
+                  <li>
+                    <a href="#">Ubicacion en fragment</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Colocar mapa</a>
+                  </li>
+                  <li>
+                    <a href="#">Otro</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Guia Android Studio</h5>
+          <div class="card-body">
+            Este Blog buscar ser un complemento a los tutoriales de Android Studio para colocar a disposición guías
+            fotográficas de los procedimientos más comunes, con los cuales se pueda construir aplicaciones completas
+            para subir en el Android Store.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+
+
+
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; www.armandopinzonv.tk</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Third party plugin JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="../js/scripts.js"></script>
+</body>
+
+</html>

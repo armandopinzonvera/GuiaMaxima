@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AWSguide</title>
+    <link rel="icon" type="image/x-icon" href="IMG/awsIcon.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <!-- bg-primary da color a la barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary2 fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">UML</span>
+            <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="ian.html">IAM <span
+                            class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="instancias.html">Instancias</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Logicas</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">UML</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h2 class="my-4">Instancias
+
+                </h2>
+
+                <!-- Blog Post -->
+                <!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+                <!-- Blog Post -->
+                <div class="card mb-4">
+
+                    <div class="card-body">
+                        <h3 class="card-title">EC2 </h3>
+
+                        <p class="card-text">Cuando creamos una instancia, esta va a tener asociada un conjunto de
+                            claves llamadas <b>pares de claves</b> o <b>key pair</b>, ese key-pair se debe guardar
+                            porque va a ser la forma principal de autenticar en las instancias y solo se usa para ella.
+                            Llegamos allí mediante: <b>servicios/EC2/pares de claves(Red y seguridad)/crear par de
+                                llaves.</b><br>
+                            Tener presente que el tablero de <b>EC2</b> nos muestra todos los recursos en uso de nuestra
+                            cuenta
+                            AWS<br>
+                            Cuando coloquemos el nombre, es adecuado colocar el nombre de la región, porque cada
+                            Key-pair está asociado a una región concreta, escogemos <b>.pem</b>, y le damos a crear.
+                            cuando es creada nos genera un archivo que debemos guardar.
+
+
+                        </p>
+
+                        <p class="card-text"></p>
+                        <img class="card-img-top" src="IMG/INSTANCIAS/ec1.png" alt="Card image cap">
+                        <p></p>
+
+                        <p class="card-text">Ya con el par de claves, debemos crear o utilizar el grupo de seguridad
+                            (segurity group), que trae por defecto. Este contiene las reglas de firewall que van a estar
+                            asociadas a un recurso de AWS</p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/INSTANCIAS/ec2.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">O podemos crear uno, en: <b>EC2/segurity groups(Red y seguridad) / crea
+                                grupo de seguridad </b>; en la ventana que nos abre, colocamos nombre al grupo,
+                            iniciando con la palabra “seg”, para identificarlo, colocamos descripción en donde indicamos
+                            para que es, en <b>VPC</b>, colocamos en que red, ahora mismo solo tenemos una por defecto,
+                            así que la dejamos.<br>
+                            Para las reglas tenemos inbound(reglas de entrada) y outbound(reglas de salida), pero por lo
+                            pronto se puede dejar en blanco
+
+                        </p>
+                        <img class="card-img-top" src="IMG/INSTANCIAS/ec3.png" alt="Card image cap">
+                        <p></p>
+                        <img class="card-img-top" src="IMG/INSTANCIAS/ec4.png" alt="Card image cap">
+
+                        <p></p>
+                        <p class="card-text">Antes de lanzar la Instancia, primero debemos entrar a las imágenes
+                            disponibles AMI /Awned by me/public images/,
+                        </p>
+                        <img class="card-img-top" src="IMG/INSTANCIAS/ec5.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">Ahora si vamos a lanzar la instancia: instancia/ lanzar instancia/;
+                            señalamos (para mi caso) free tier, que son las imágenes gratuitas, para este ejemplo
+                            seleccionamos Ubuntu server 20.04 LTS.., la cual indica que es freetier, y nos envía a la
+                            página de tipos, en donde por defecto ya está escogido el que es freetier, pero es de
+                            realatar que aca se escoge los recursos del equipo, en donde se ven variedad de CPUs y
+                            memorias, y con base en eso la diferencia en precios.
+
+                            <img class="card-img-top" src="IMG/INSTANCIAS/ec6.png" alt="Card image cap">
+                            <p></p>
+                            <img class="card-img-top" src="IMG/INSTANCIAS/ec7.png" alt="Card image cap">
+
+                            <p></p>
+                            <p class="card-text">Luego nos manda a una ventana en donde se resume toda la información de
+                                la instancia, pero para modificar cualquier característica, podemos escoger de las
+                                pestañas ubicadas en la parte superior, en 3.configure instance, seleccionamos Protect
+                                againt accidental termination.
+
+                                <img class="card-img-top" src="IMG/INSTANCIAS/ec8.png" alt="Card image cap">
+                                <p></p>
+                                <img class="card-img-top" src="IMG/INSTANCIAS/ec9.png" alt="Card image cap">
+                                <p></p>
+                                <p class="card-text">En las pestañas, seleccionamos segurity grupos existente, o
+                                    podríamos crearlo desde allí.
+
+                                    <img class="card-img-top" src="IMG/INSTANCIAS/ec10.png" alt="Card image cap">
+                                    <p></p>
+
+                                    <p class="card-text">Ahora si le damos a lanzar, primero nos muestra la ventana de
+                                        resumen de información, denuevo indicamos lanzar y nos abre una ventana en donde
+                                        nos indica la key pair, revisamos que sea la requerida y indicamos Launch
+                                        instances
+
+                                        <img class="card-img-top" src="IMG/INSTANCIAS/ec11.png" alt="Card image cap">
+
+                                        <p></p>
+
+                                        <p class="card-text">Ahora nos muestra una ventana de confirmación, en donde
+                                            tenemos un botón en la parte inferior derecha donde podemos ver la
+                                            instancia, si entramos a ver intancia ya la podemos ver en nuestro tablero
+
+                                            <img class="card-img-top" src="IMG/INSTANCIAS/ec12.png"
+                                                alt="Card image cap">
+                                            <p></p>
+                                            <img class="card-img-top" src="IMG/INSTANCIAS/ec13.png"
+                                                alt="Card image cap">
+
+                    </div>
+                    <div class="card-footer text-muted">
+                        Publicado en Septiembre 20, 2020 by
+                        <a href="#">Armando Pinzon</a>
+                    </div>
+                </div>
+
+
+
+                <!-- Blog Post -->
+
+                <div class="card mb-4">
+
+                    <div class="card-body">
+                        <h2 class="card-title">Configurar Claves de acceso</h2>
+                        <p class="card-text">Defecto Android studio trae muy pocos
+                            colores en la paleta de opciones, para los atributos de los elementos de nuestra UI, si
+                            queremos que este una paleta amplia, podemos colocar los siguiente valores en el archivo
+                            <b>res/values/colors.xml</b></p>
+
+                        <img class="card-img-top" src="IMG/CONFIGURACION/colores.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">El siguiente vinculo (Código de colores) nos direcciona a
+                            <i>android-codelab</i>,
+                            en donde encontramos el recurso para copiar y pegar en el archivo colors.xml</p>
+
+                        <p></p>
+                        <a target="blank"
+                            href="https://codelabs.developers.google.com/codelabs/android-training-support-libraries/index.html?index=..%2F..android-training#3"
+                            class="btn btn-primary">Codigo de colores &rarr;</a>
+                    </div>
+
+
+                    <div class="card-footer text-muted">
+                        Posted on Agosto 12, 2020 by
+                        <a href="#">Armando Pinzon</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post -->
+
+                <div class="card mb-4">
+
+                    <div class="card-body">
+                        <h2 class="card-title">Terminal windows y version java</h2>
+                        <p class="card-text">Para abrir el termina se debe hacer la combinacion de teclas <b>Windows +
+                                r</b> y parece la ventana ejecutar, en donde escribios <b>cmd</b> y damos a enter </p>
+
+                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">Para saber la version de java indicamos: <b>java -version</b></p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd2.png" alt="Card image cap">
+                        <p></p>
+
+                    </div>
+
+
+                    <div class="card-footer text-muted">
+                        Posted on Septiembre 9, 2020 by
+                        <a href="#">Armando Pinzon</a>
+                    </div>
+                </div>
+
+
+                <!-- Pagination -->
+                <ul class="pagination justify-content-center mb-4">
+                    <li class="page-item">
+                        <a class="page-link" href="debugTest.html">&larr; Anterior</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="Git-Github.html">Siguiente &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Search Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Buscar</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="En Android Developers...">
+                            <span class="input-group-append">
+                                <button class="btn btn-secondary" type="button">Ir!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Temas</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <a href="#">configurar JEE</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">xxxx</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">xxxx</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <a href="#">xxxx</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">xxxx</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Widget -->
+                <div class="card my-4">
+                    <h5 class="card-header">Guia JAVA</h5>
+                    <div class="card-body">
+                        Este Blog aportar con instructivos para procedimientos comunes en Java, enfocado en servidores y
+                        manejo de BBDD relacionales
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; www.armandopinzonv.tk</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../js/scripts.js"></script>
+</body>
+
+</html>
