@@ -23,7 +23,7 @@
     <!-- bg-primary da color a la barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary3 fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">UML</span>
+            <span class="d-block d-lg-none">SpringBoot</span>
             <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
 
         </a>
@@ -32,14 +32,14 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="configuracion.html">Configuracion <span
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Configuracion <span
                             class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="spring.html">Spring</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="configuracion.html">Spring</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="logicas.html">Logicas</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="uml.html">UML</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="awsJava.html">AWSjava</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="springBoot.html">Spring Boot</a></li>
-
+                
             </ul>
         </div>
     </nav>
@@ -51,7 +51,7 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h2 class="my-4">UML
+                <h2 class="my-4">SpringBoot
 
                 </h2>
 
@@ -65,60 +65,48 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h3 class="card-title">Diagrama </h3>
-
+                        <h3 class="card-title">Building a RESTful web Service </h3>
+                        <h4 class="card-title">setup maven </h4>
                         <p class="card-text">
-                            Para realizar el diagrama, un alternativa es emplear la página <a
-                                href="https://plantuml.com/es/" target="blank"><b>PlantUML</b></a>, en la opción de
-                            /<b>Online Server</b>/ nos abre una ventana para introducir código con el cual construir el
-                            diagrama<br>
-                            Este código va entre, una etiqueta de inicio y de final: <b>@startuml</b> y <b>@enduml</b>,
-                            consiste en primero declarar las clases, con la palabra reservada <b>class</b>, el
-                            <b>nombre</b>, llaves <b>{}</b>, y dentro de las llaves, declaramos los <b>métodos()</b> y
-                            <b>variables</b>.<br>
-                            Posteriormente indicamos la relación entre las clases con los nombres anteriormente
-                            utilizados, <b>guiones</b> y signo de <b>mayorQue</b>.
+                            (REST) representational state transfer, es una estilo arquitectonico que especifica
+                            como se dara la comunicacion entre el usuario y el servidor
+                            establece las reglas de comunicacion entre el usuario y el servidor: que metodos HTTP
+                            disponibles, como se mostraran los recursos.<br>
+                            El Boot hace la configuracion del proyecto e incluye las librerias<br>
+                            Se realiza iniciando con la configuracion del boot, se debe hacer la configuracion con 
+                            el <a href="https://start.spring.io/" target="blank"><b>Spring Inicializr</b></a>
+                            El cual para el presente proyecto se debe configurar como muestra la siguiente imagen.
+                            En donde se indica: Project > <b>maven</b>, Lenguage: <b>Java</b>, version de 
+                            Spring (ya viene por defecto), los datos del proyecto, Packaging <b>War</b>, version de 
+                            java, y las dependencias a incluir, que en este caso son: <b>Spring Web, Thymeleaf, 
+                            Spring Data JPA, MySQL Driver y Spring Boot DevTools </b>
+
                         </p>
 
                         <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/UML/um1.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SpringBoot/sb1.png" alt="Card image cap">
                         <p></p>
-
-                        <p class="card-text">Dentro de las clases las variables se declaran como: tipo de dato y nombre,
-                            mientras los métodos con el nombre seguido de paréntesis</p>
-                        <pre class="pre">
-                            class VistaTransecto{
-                                TextView longitud, latitud
-                                onCreate()
-                                conectarExtras()
-                                putValueTextView(double latitude, double longitude)
-                                stop()
-                                conectarSQLite()
-                                hilo()
-                                onBackPressed()
-                                }
-                        </pre>
-
-
-                        <p></p>
-                        <p class="card-text">Tenemos tres tipos de relaciones entre las clases:<br>
-                            <b>Composición</b>: la clase que lleva el diamante lleno, no funciona sin la clase del otro
-                            extremo, como ejemplo: computador-cpu, se indica cómo <b>--*</b><br>
-                            <b>Agregación</b>: la clase que lleva el diamante vacío, tiene la del otro lado, pero no
-                            depende de ella, puede funcionar sin esa, se indica como <b>--o</b><br>
-                            <b>Extensión</b>: cuando hereda, se indica como <b>--|></b>
+                        <p class="card-text">Al dar click en <b>Generate <i>'CRTL'</i></b> se genera una carpeta .zip
+                            la cual descomprimimos y procedemos a importar el proyecto con Eclipse EE, con la pestaña <b>file</b>
                         </p>
-                        <pre>
-Iniciar-->VistaTransecto
-Iniciar--*Service_Location
-VistaTransecto*--Service_Location
-Service_Location--mapFragment
-mapFragment*--VistaTransecto
-VistaTransecto--ConexionSQLite
-UtilidadesSQLite--ConexionSQLite
-                            </pre>
+                        <p></p>
+                        <p class="card-text"></p>
+                        <img class="card-img-top" src="IMG/SpringBoot/sb2.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">Seleccionamos <b>import</b> y luego  en la ventana que se abre, seleccionamos: 
+                            <b>Maven / Existing Maven Project </b> luego damos click en siguiente y nos abre una nueva ventana 
+                            en donde seleccionamos la carpeta descomprimida creada por <b> SpringBoot</b>                        </p>
+                        <p></p>
+                        <p class="card-text"></p>
+                        <img class="card-img-top" src="IMG/SpringBoot/sb3.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">Seleccionamos <b>import</b> y luego  en la ventana que se abre, seleccionamos: 
+                            <b> Con lo cual nos crea un nuvo proyecto con los archivos y carpetas que se muestran en la siguiente imagen                       </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/SpringBoot/sb4.png" alt="Card image cap">
+                        <p></p>
 
-                        <img class="card-img-top" src="IMG/UML/um2.png" alt="Card image cap">
+
 
                     </div>
                     <div class="card-footer text-muted">
@@ -134,22 +122,72 @@ UtilidadesSQLite--ConexionSQLite
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h2 class="card-title">xxxx</h2>
-                        <p class="card-text">Defecto Android studio trae muy pocos
-                            colores en la paleta de opciones, para los atributos de los elementos de nuestra UI, si
-                            queremos que este una paleta amplia, podemos colocar los siguiente valores en el archivo
-                            <b>res/values/colors.xml</b></p>
+                        <h2 class="card-title">Integrar libreria</h2>
+                        <p class="card-text">Nos colocamos en la vista de Java (window/ perspective/ open perspective)
+                            iniciamos un nuevo proyecto: File / new / new Java project, en la ventana que
+                            se abre dejamos seleccionado el boton de "use a project specific JRE" y
+                            damos en <b>Finish</b>
 
-                        <img class="card-img-top" src="IMG/CONFIGURACION/colores.png" alt="Card image cap">
-                        <p></p>
-                        <p class="card-text">El siguiente vinculo (Código de colores) nos direcciona a
-                            <i>android-codelab</i>,
-                            en donde encontramos el recurso para copiar y pegar en el archivo colors.xml</p>
+                        </p>
 
+                        <img class="card-img-top" src="IMG/CONFIGURACION/jee4.png" alt="Card image cap">
                         <p></p>
-                        <a target="blank"
-                            href="https://codelabs.developers.google.com/codelabs/android-training-support-libraries/index.html?index=..%2F..android-training#3"
-                            class="btn btn-primary">Codigo de colores &rarr;</a>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/jee5.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                            Ahora el proyecto creado aparece en el listado de carpetas, en el costado izquierdo
+                            de la interfaz, damos clic derecho sobre este:<b> build path / configure Build path.</b><br>
+
+
+
+                        </p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji7.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+
+                            En la ventana que se abre, vamos a la pestaña <b>Order and Export</b>, Colocamos de primero:
+                            <b>la carpeta SRC</b>, utilizando los el Boton lateral
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji8.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+
+                            Ahora, vamos a la pestaña <b>Libraries</b>, damos un click sobre <b>Modulepath (tiene dos
+                                flechitas)</b>
+                            A lo cual se habilitan el boton de <b>Add JARs...</b>
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji9.png" alt="Card image cap">
+                        <p></p>
+
+                        <p class="card-text">
+
+                            Damos click en el Boton <b>Add External JARs...</b>, A lo cual se abre una nueva ventana,
+                            donde buscamos la ruta de la carpeta en donde se encuentra el <b>Spring JAR files</b>que
+                            descargamos, en la carpeta <b>libs</b>; solamente seleccionamos los <b>archivos binarios</b>, es decir
+                            que no incluimos los <i>-javadoc & -source</i>
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji10.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+
+                            Despues de abrir los archivos seleccionados, damos en <b>Apply</b> y despues en <b>Apply and Close</b>
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji11.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+
+                            Con lo cual se nos crea un archivo nuevo llamado: <b>JRE System Library</b>
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/ji12.png" alt="Card image cap">
+                        <p></p>
+                        <p></p>
+                        <a target="blank" href="https://www.youtube.com/watch?v=SNK8n08QdPA"
+                            class="btn btn-primary">video tutorial &rarr;</a>
                     </div>
 
 
