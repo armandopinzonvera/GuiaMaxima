@@ -201,22 +201,192 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h2 class="card-title">Terminal windows y version java</h2>
-                        <p class="card-text">Para abrir el termina se debe hacer la combinacion de teclas <b>Windows +
-                                r</b> y parece la ventana ejecutar, en donde escribios <b>cmd</b> y damos a enter </p>
+                        <h2 class="card-title">CRUD-mySQL-Spring</h2>
+                        <p class="card-text">Creamos el Initializr, como un proyecto de Maven, en Java,
+                            packaging: .JAR
+                             incluyendo las siguientes librerias:
+                             <b>spring web, Thymeleaf, Srping Data JPA, MySQL Driver</b><br>
+                             Ademas creamos, descomprimimos e importamos el proyecto a eclipse
+                            como Maven.
+                             </p>
 
-                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SPRING/ss1.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">Para saber la version de java indicamos: <b>java -version</b></p>
+                        
+
+                        <p class="card-text">
+                            procedemos a configurar las propiedades de la aplicacion, en la
+                            ruta: <b>src/main/resources/templates/application.properties</b>
+                            donde el archivo se encuentra vacio.
+                            Colocamos la siguiente configuracion para Mysql:<br>
+                            <p></p> <i>
+                            spring.datasource.url=jdbc:mysql://localhost:3306/crud_spring?serverTimezone=UTC<br>
+                            spring.datasource.username=root<br>
+                            spring.datasource.password=<br>
+                            spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver<br>
+
+                            spring.jpa.hibernate.ddl-auto=create</i>
+
+                        </p>
                         <p></p>
-                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd2.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SPRING/ss2.png" alt="Card image cap">
                         <p></p>
+
+                        <p class="card-text">Dentro del paquete principal <b>(src/main/java)</b> generamos cinco paquetes 
+                            para el proyecto:
+                            <b>(clic-der * src/main/java* / new /Package)</b>
+                            colocando en el nombre: punto + palabra identificadora, generando los paquetes:
+                           <b>controler, interfaces, modelo, service & interfaceService</b> 
+                             </p>
+
+                        <img class="card-img-top" src="IMG/SPRING/ss5.png" alt="Card image cap">
+                        <p></p>
+
+                        <p class="card-text">En el paquete <b>.modelo</b> creamos una clase a la que llamamos persona, con tres 
+                            variables correspondientes a los campos de la tabla de la BBDD
+                             </p>
+
+                        <img class="card-img-top" src="IMG/SPRING/ss6.png" alt="Card image cap">
+                        <p></p>
+
+                        <p class="card-text">luego con click derecho sbre el codigo de la clase persona, 
+                           <b> (clic-der / Source /Generate contructor using fields..) </b> y creamos el constructor
+                            <b>(clic-der / Source /Generate Getters and Setters) </b> y creamos getters y setters
+                            Ademas creamos un constructor sin parametros
+                             </p>
+
+                        <img class="card-img-top" src="IMG/SPRING/ss7.png" alt="Card image cap">
+                        <p></p>
+
+                        <p class="card-text"> sobre la declaracion de la clase, colocamos las anotaciones:
+                            (importando las clases, 0cuando aparezca el error); en donde la anotacion
+                            Table contiene el atributo name, indicando el mismo nombre de la clase:<br>
+                           <b> @Entity<br>
+                            @Table(name="persona")</b> <br>
+                            luego sobre el parametro correpondiente al "id" de la tabla, en la clase, colo
+                            camos las anotaciones:<br>
+                           <b> @Id<br>
+                            @GeneratedValue(strategy = GenerationType.IDENTITY)</b>
+                              </p>
+ 
+                         <img class="card-img-top" src="IMG/SPRING/ss8.png" alt="Card image cap">
+                         <p></p>
+
+                         <p class="card-text">Ahora en el <b>Package interfaces</b>(com.example.demo.interfaces), creamos una
+                            Interfaz, llamada Ipersona, y le heredamos de la clase CrudRepository*Object, Object*
+                            Colocando como <b>..extends CrudRepository*Persona, Integer*{ </b>
+                            ademas, a la clase,  le agregamos la anotacion: <b>@Repository</b>
+                              </p>
+ 
+                         <img class="card-img-top" src="IMG/SPRING/ss9.png" alt="Card image cap">
+                         <p></p>
+
+
+                         <p class="card-text">Ahora en el paquete interfaceService creamos otra interfaz, a la que llamaremos:
+                            IpersonaService, y dentro de ella creamos los metodos del CRUD<br>
+                            <p></p> <i>
+                                public List*Persona*listar();<br>
+                                public Optional*Persona*listarId(int id);<br>
+                                public int save(Persona p);<br>
+                                public void delete(int id);<br></i>
+                                <p></p>
+                            Teniendo presente se hagan las respectivas importaciones:<br>
+                            <i>  import java.util.List;<br>
+                                import java.util.Optional;<br>
+                                import com.example.demo.modelo.Persona</i>
+                              </p>
+ 
+                         <img class="card-img-top" src="IMG/SPRING/ss10.png" alt="Card image cap">
+                         <p></p>
+
+                         <p class="card-text">En el Package service (com.example.demo.service), creamos una clase a la que 
+                            llamamos PersonaService, y le implementamos la interfaz creada anteriorment
+                            con sus respectivos metodos. 
+                            ademas, a la clase,  le agregamos la anotacion:<br> <b>@Service</b>
+                              </p>
+ 
+            
+                         <p></p>
+
+                         <p class="card-text">Ademas creamos una variable de Ipersona llamada data, a la cual le colocamos la anotacion <br>
+                           <b>@autowired</b> <br>Cuidando se haga las respectivas importaciones  
+                            ahora en esa clase; dentro del metodo, List<>, colocamos la variable data
+                            con el metodo <b>.findAll()</b> , este metodo proviene de -CrudRepository,
+                            el cual se debe castear con (List*Persona*)
+                              </p>
+ 
+                         <img class="card-img-top" src="IMG/SPRING/ss12.png" alt="Card image cap">
+                         <p></p>
+
+                         <p class="card-text">Ahora en el package controlador<b>(com.example.demo.controlador)</b>, creamos una
+                            clase llamada Controlador, colocandole las anotaciones: <br>
+                           <b> @Controller</b><br>
+                            <b>@RequestMapping</b><br>
+                            ademas le creamos un metodo llamado listar con parametro Model y return <b>"index"</b>,
+                            refiriendoce al <b>.html</b>, al que le colocamos la anotacion, agregando la ruta ("/listar"):<br>
+                           <b> @GetMapping("/listar")</b><br>
+                            Tambien creamos una variable de IpersonaService, llamada service y le colocamos la
+                            anotacion:<br>
+                            <b>@Autowired</b><br>
+                            A esta variable le agregamos el metodo listar: <b>service.listar()</b>; asignandola dentro de una 
+                            variable de tipo List. <br>
+                            Ahora a la variable model le agregamos el medodo <b>addAttribute()</b> incluyendole el nombre
+                            "personas" y la variable personas
+                              </p>
+
+                        
+                         <img class="card-img-top" src="IMG/SPRING/ss13.png" alt="Card image cap">
+                         <p></p>
+                         <p class="card-text">Creamos una BBDD con <b>XAMPP</b>, sin colocarle campo y cuyo nombre debe ser
+                            el referenciado en los atributos de nuestro Srping
+                              </p>
+ 
+                         <img class="card-img-top" src="IMG/SPRING/ss17.png" alt="Card image cap">
+                         <p></p>
+
+
+                         <p class="card-text">vamos a la carpeta templates (src/main/resources - templates) y creamos un archivo
+                            .html (clic-der / new / other / - / web / HTML File) y lo llamamos index.html
+                            OJO: el nombre de ese archivo es referenciado en el controlador
+                        </p>
+                        <img class="card-img-top" src="IMG/SPRING/ss14.png" alt="Card image cap">
+                        <p></p>
+                        <p>
+                            Dentro creamos una tabla con las etiquetas correspondientes, con los campos:
+                            - ID - NOMBRE - TELEFONO - ACCIONES
+                            Le agregamos la dependencia de ThymeLeaf, en la etiqueta de html, como 
+                             (html xmlns:th="http://www.thymeleaf.org")
+                            Le agregamos el cdn de 
+                            <a  href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target = "blank">bootstrap </a>en la ultima parte del head
+                            y agregamos las clases de CSS, 
+                            ademas dentro de la etiqueta (tr) colocamos el atributo 
+                            (tr th:each="persona:${personas}" ) en donde se hace referencia a "personas" del 
+                            controlador - (model.addAttribute(<b>"personas"</b>, personas);).<br>
+                            utilizando ese atributo, referenciamos los registros de la clase Persona en el modelo
+                            (td+${persona.id}+/td)<br>
+                            Ahora colocamos los botones en el ultimo (td), con la clase ="btn  btn"
+                               </p>
+  
+                          <img class="card-img-top" src="IMG/SPRING/ss15.png" alt="Card image cap">
+                          <p></p>
+
+
+                          <p class="card-text">ahora podemos correr la aplicacion con la clase main (src/main/java)
+                              -com.example.demo - CrudMysqlApplication.java y si no hay error se puede ver en:<br>
+                              <b>http://localhost:8080/</b>
+                    
+                               </p>
+  
+                          <img class="card-img-top" src="IMG/SPRING/ss16.png" alt="Card image cap">
+                          <p></p>
+
+
 
                     </div>
 
 
                     <div class="card-footer text-muted">
-                        Posted on Septiembre 9, 2020 by
+                        Posted on febrero 15, 2021 by
                         <a href="#">Armando Pinzon</a>
                     </div>
                 </div>
@@ -258,23 +428,23 @@
                             <div class="col-lg-6">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#">configurar JEE</a>
+                                        <a href="#">Instalacion</a>
                                     </li>
                                     <li>
-                                        <a href="#">xxxx</a>
+                                        <a href="#">Integrar Librerias</a>
                                     </li>
                                     <li>
-                                        <a href="#">xxxx</a>
+                                        <a href="#">CRUD-mySQL-Spring</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#">xxxx</a>
+                                        <a href="#">CRUD-postgres</a>
                                     </li>
                                     <li>
-                                        <a href="#">xxxx</a>
+                                        <a href="#">-</a>
                                     </li>
 
                                 </ul>

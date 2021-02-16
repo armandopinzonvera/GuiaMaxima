@@ -54,16 +54,79 @@
         <h2 class="my-4">Services & Thread
 
         </h2>
+        <!--
+        ////////////////////////////////////////////
+        /////////////////////////////////////////
+        ////////////////////////////////////////-->
+ <!-- Blog Post -->
+ <div class="card mb-4">
 
+  <div class="card-body">
+    <h2 class="card-title">Services<br></h2>
+
+    <p class="card-text">Un <i>Service</i> es un componente de una aplicación que puede 
+      realizar operaciones de larga ejecución en segundo plano y que no proporciona una interfaz de usuario.<br>
+      Para crear un servicio se debe generar una subclase Service: <b> extends Service</b>. <br>
+      Adicionalmente, todos los servicios deben ser declarados en el Manifest, colocando una 
+      etiqueta <b>**service**</b>, con los atributos: name, enable y exported (El atributo name, es el unico obligatorio)<br>
+      Puedes garantizar que tu servicio esté disponible solo para tu aplicación incluyendo el atributo android:exported 
+      y configurándolo en false. Esto impide que otras aplicaciones inicien tu servicio, incluso cuando se utiliza una
+       intent explícita.<br>
+
+    </p>
+    <p></p>
+    <img class="card-img-top" src="IMG/SERVICES/sv7 .png" alt="Card image cap">
+    <p class="card-text"></p>
+
+    <p class="card-text"> Para Iniciar el servicio desde otro activity se debe invocar el metodo <b>startService()</b>
+      Colocando como parametro un <b>intent</b> que apunte a la clase del servicio<br>
+      tambien se puede declarar como:<br>
+      <b><i>starService(new Intent(this, NOMBRECLASE_SERVICIO.class))</i></b>
+      <br>    
+    </p>
+
+    <img class="card-img-top" src="IMG/SERVICES/ss1.png" alt="Card image cap">
+    <p class="card-text"></p>
+
+    
+
+    <p class="card-text">El servicio arranca con el metodo <b>onStartCommand(Intent intent, int flags, int startId)</b>.<br>
+      por lo cual las funciones a ejecutar se deben incluir en este.
+    </p>
+
+    <img class="card-img-top" src="IMG/SERVICES/ss2.png" alt="Card image cap">
+    <p class="card-text"></p>
+   
+
+  </div>
+
+
+  
+ 
+
+  
+
+
+  <div class="card-footer text-muted">
+    Publicado en febrero 9, 2020 by
+    <a href="#">Armando Pinzon</a>
+  </div>
+</div>
+<!-- 
+     *********************************************************
+     *********************************************************
+     *********************************************************
+ -->
+
+
+        
         <!-- Blog Post -->
         <div class="card mb-4">
 
           <div class="card-body">
             <h2 class="card-title">Services Location<br></h2>
 
-            <p class="card-text">Un <i>Service</i> es un componente que puede realizar operaciones de larga ejecución en
-              segundo plano y que no proporciona interfaz de usuario, es decir lo podemos tener corriendo, mientras al
-              mismo tiempo se ejecuta nuestra activity, permitiendo usarlo para microservicios.<br>
+            <p class="card-text">
               No se debe olvidar que los servicios se deben declarar en el <b>manifest</b>, además que tratándose de
               <i>location</i>, se debe indicar en ese mismo archivo, los permiso de acceso a fine location y agregar la
               implementación del <b>API-SERVICE</b> que se puede ver en el apartado de <a target="blank"
@@ -408,23 +471,23 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
+                    <a href="#">Service</a>
+                  </li>
+                  <li>
                     <a href="#">Service Location</a>
                   </li>
                   <li>
-                    <a href="#">service time</a>
-                  </li>
-                  <li>
-                    <a href="#">otro</a>
+                    <a href="#">Thread</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">otro</a>
+                    <a href="#">-</a>
                   </li>
                   <li>
-                    <a href="#">Otro</a>
+                    <a href="#">-</a>
                   </li>
 
                 </ul>
