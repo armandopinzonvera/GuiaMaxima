@@ -86,34 +86,46 @@
             <p class="card-text"></p>
 
             <p class="card-text">En la clase <b>Utilidades</b> declaramos como constantes los nombres de los campos
-              (Columnas) de la tabla, además la sentencia de creación de la tabla en <i>SQL</i>, en este caso al ID, se
-              le agregaron las propiedades de INTEGER PRIMARY KEY AUTOINCREMENT</p>
-            <pre class="pre">
-              public class UtilidadesSQLite {
+              (Columnas) de las tablas, además la sentencia de creación de cada  tabla en <i>SQL</i>; se presentan dos Tablas 
+              enlazadas mediante <b>Foreign Key</b>
+           
+           
+           
+              <pre class="pre">
+              <code>
+                public class UtilidadesSQLite  {
 
-                public static final String ID = "id";
-                public static final String NOMBRE_PROYECTO = "bbdd_tas";
-                public static final String NOMBRE_MUESTREO = "nombre_muestreo";
-                public static final String LATITUD = "latitud";
-                public static final String LONGITUD = "longitud";
-                public static final String ALTURA = "altura";
-                public static final String FECHA = "fecha";
-                public static final String HORA = "hora";
-                public static final String TAXON = "taxon";
-                public static final String CANTIDAD = "cantidad";
-            
-                public static final String CREAR_TABLA_PROYECTO = "CREATE TABLE "+NOMBRE_PROYECTO+" ("
-                        +ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        +NOMBRE_MUESTREO+" TEXT, "
-                        +LATITUD+" TEXT, "
-                        +LONGITUD+" TEXT, "
-                        +ALTURA+" TEXT, "
-                        +FECHA+" TEXT, "
-                        +HORA+" TEXT, "
-                        +TAXON+" TEXT, "
-                        +CANTIDAD+" TEXT)";
-            }</pre>
-            <img class="card-img-top" src="IMG/SQLite/sq3.png" alt="Card image cap">
+
+                  public static final String DDBB_NAME="DDBB_tas";
+              
+              
+                  //////////  tabla transecto  /////////////
+              
+                  public static final String TABLA_TRANSECTO = "tabla_transecto";
+                  public static final String ID_TRANSECTO = "id_transecto";
+                  public static final String FK_TRACK = "fk_track";
+              
+                  public static final String CREAR_TABLA_TRANSECTO = "CREATE TABLE "
+                          +TABLA_TRANSECTO+" ("
+                          +ID_TRANSECTO+" TEXT PRIMARY KEY, "
+                          +FK_TRACK+" TEXT )";
+              
+              
+                  //////////  tabla proyecto  /////////////
+              
+                  public static final String TABLA_PROYECTO = "tabla_proyecto";
+                  public static final String NOMBRE_PROYECTO = "nombre_proyecto";
+                  public static final String FK_TRANSECTO = "fk_transecto";
+              
+              
+                  public static final String CREAR_TABLA_PROYECTO = "CREATE TABLE "
+                          +TABLA_PROYECTO+" ("
+                          +NOMBRE_PROYECTO+" TEXT, "
+                          +FK_TRANSECTO+" TEXT, FOREIGN KEY("+FK_TRANSECTO+") REFERENCES "+TABLA_TRANSECTO+"( "+ID_TRANSECTO+") )";
+                }           
+          </code>
+          </pre>
+           
             <p class="card-text"></p>
             <p class="card-text">Pasamos a la clase <b>Conexión</b>, en el método <b>onCreate()</b> indicamos la
               ejecución del SQL,
@@ -131,12 +143,14 @@
             
                 @Override
                 public void onCreate(SQLiteDatabase db) {
-                    db.execSQL(UtilidadesSQLite.CREAR_TABLA_PROYECTO );
+                  db.execSQL(UtilidadesSQLite.CREAR_TABLA_TRANSECTO);
+                  db.execSQL(UtilidadesSQLite.CREAR_TABLA_PROYECTO);
                 }
             
                 @Override
                 public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-                    db.execSQL("DROP TABLE IF EXISTS " + UtilidadesSQLite.NOMBRE_PROYECTO);
+                  db.execSQL("DROP TABLE IF EXISTS "+UtilidadesSQLite.TABLA_PROYECTO);
+                  db.execSQL("DROP TABLE IF EXISTS "+UtilidadesSQLite.TABLA_TRANSECTO);
                 }
             }</pre>
 
@@ -152,19 +166,22 @@
               el primer parametro es el nombre de la BBDD, seguido por el primer campo y value.
               además al final se coloca el método setText con comillas para dejar en blanco las casillas </p>
             <pre class="pre">
-                public void conectarSQLite(){
-                  ConexionSQLite conexionSQLite = new ConexionSQLite(this, UtilidadesSQLite.NOMBRE_PROYECTO, null, 1 );
-                  SQLiteDatabase db = conexionSQLite.getWritableDatabase();
-                  ContentValues values = new ContentValues();
-          
-                  values.put(UtilidadesSQLite.NOMBRE_MUESTREO, etNombreProyecto.getText().toString());
-                  values.put(UtilidadesSQLite.LATITUD, etIdTransecto.getText().toString());
-                  
-                  Long idResultante = db.insert(UtilidadesSQLite.NOMBRE_PROYECTO, UtilidadesSQLite.NOMBRE_MUESTREO, values);
-          
-                  Toast.makeText(getApplicationContext(), "Numero de Registro = "+idResultante, Toast.LENGTH_LONG).show();
-                  etIdTransecto.setText("");
-                  etNombreProyecto.setText("");
+            private void iniciarProyecto() {
+              
+              ConexionSQLite conexionSQLite = new ConexionSQLite(this, UtilidadesSQLite.DDBB_NAME, null, 1);
+              SQLiteDatabase ddbb = conexionSQLite.getWritableDatabase();
+      
+              String insert = "INSERT INTO "+UtilidadesSQLite.TABLA_PROYECTO
+                      +" ( " +UtilidadesSQLite.NOMBRE_PROYECTO+", "+UtilidadesSQLite.FK_TRANSECTO+") "
+                      +" VALUES ('"+et_nombreProyecto.getText().toString()+"', '"+et_IdTransecto.getText().toString()+"')";
+              ddbb.execSQL(insert);
+              String insert2 = "INSERT INTO "+UtilidadesSQLite.TABLA_TRANSECTO
+                      +" ( " +UtilidadesSQLite.ID_TRANSECTO+", "+UtilidadesSQLite.FK_TRACK+") "
+                      +" VALUES ('"+et_IdTransecto.getText().toString()+"', '"+0+"')";
+      
+              ddbb.execSQL(insert2);
+              et_nombreProyecto.setText("");
+              et_IdTransecto.setText("");
               }
                 </pre>
 
