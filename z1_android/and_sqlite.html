@@ -192,7 +192,7 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en Agosto 27, 2020 by
-            <a href="#">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
           </div>
         </div>
 
@@ -233,9 +233,92 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en Agosto 29, 2020 por
-            <a href="#">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
           </div>
         </div>
+
+          <!-- Blog Post -->
+
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <h2 class="card-title">Consultar SQLite</h2>
+            <p class="card-text">lo primero es tener una BBDD creada con informacion que podamos consultar,
+              Ahora, en la clase en donde queramos realizar la consulta, colocamos un EditText, donde se colocara
+              de busqueda y las casillas para mostrar el resultado.<br>
+              para realizar la busqueda , al igual que en la clase de envio de informacion, creamos una variable
+              general de la clase con la conexion <b>ConexionSQLite</b>, la cual inicializamos en el metodo <i>onCreate</i>,
+              introduciendo los mismos parametros de su creacion: <b>conexionSQLite = new ConexionSQLite(getApplicationContext(), UtilidadesSQLite.DDBB_NAME, null, 1 );</b>
+              y creamos un metodo en donde colocamos la logica de la busqueda.</br>
+
+
+            </p>
+            <img class="card-img-top" src="IMG/SQLite/sc1.png" alt="Card image cap">
+            <p class="card-text"></p>
+
+            <p class="card-text">En el metodo que utilicemos para la consulta, creamos una variable <b>SQLiteDatabase</b> y le asignamos la variable de la conexion que habiamos creado,
+               con el metodo <b>getReadableDatabase()</b> y creamos dos variables <b>Arays</b>, ubicando en la primera, el parametro que va a ser usado en la consulta, y en la segunda, 
+               los campos que esperamos de respuesta.<br>
+               Luego creamos una variable de tipo <b>Cursor</b>, a la cual le asignamos la variable de la conexion, con el metodo <b>query()</b>, e incluyendo los dos arrays recien creados
+               para la consulta: <i>Cursor cursor =  db.query(UtilidadesSQLite.TABLA_PROYECTO, campos, UtilidadesSQLite.NOMBRE_PROYECTO+"=?", parametros, null, null, null );</i> <br>
+               posteriormente, le colocamos el metodo <b>moveToFirst</b> a la variable <i>cursor</i> y el metodo <b>setText</b> al TextView donde queremos se vea la informacion.<br>
+               cerrando el <i>cursor</i> al final y rodenado todo con un <b>try - catch</b>, por si se consulta un nombre que no exista.
+            </p>
+            <img class="card-img-top" src="IMG/SQLite/sc2.png" alt="Card image cap">
+            <p class="card-text"></p>
+              <pre>
+                  <code>
+                    public class Continuar extends AppCompatActivity {
+
+                      EditText et_c_nombreproyecto;
+                      TextView tv_c_transecto, tv_c_sumaTransecto;
+                      ConexionSQLite conexionSQLite;
+                  
+                      @Override
+                      protected void onCreate(Bundle savedInstanceState) {
+                          super.onCreate(savedInstanceState);
+                          setContentView(R.layout.activity_continuar);
+                  
+                          conexionSQLite = new ConexionSQLite(getApplicationContext(), UtilidadesSQLite.DDBB_NAME, null, 1 );
+                  
+                          et_c_nombreproyecto =  findViewById(R.id.et_c_nombreProyecto);
+                          tv_c_transecto = findViewById(R.id.tv_c_transecto);
+                          tv_c_sumaTransecto = findViewById(R.id.tv_c_sumaTransecto);
+                  
+                      }
+                  
+                      public void buscar(View view) {
+                          SQLiteDatabase db = conexionSQLite.getReadableDatabase();
+                          String [] parametros = {et_c_nombreproyecto.getText().toString()};
+                          String[] campos = {UtilidadesSQLite.FK_TRANSECTO};
+                  
+                          try {
+                              Cursor cursor =  db.query(UtilidadesSQLite.TABLA_PROYECTO, campos, UtilidadesSQLite.NOMBRE_PROYECTO+"=?",
+                                      parametros, null, null, null );
+                              cursor.moveToFirst();
+                              tv_c_transecto.setText(cursor.getString(0));
+                  
+                              cursor.close();
+                          } catch (Exception e) {
+                              Toast.makeText(this, "", Toast.LENGTH_SHORT).show();;
+                              et_c_nombreproyecto.setText("");
+                          }
+                      }
+
+                  </code>
+              </pre>
+            
+            
+
+          </div>
+          <div class="card-footer text-muted">
+            Publicado en febrero 19, 2020 por
+            <a href="https://github.com/armandopinzonvera" target="blank">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+        
         <!--/////////////////// END Post -->
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
