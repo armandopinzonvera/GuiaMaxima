@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>JavaGui</title>
-    <link rel="icon" type="image/x-icon" href="IMG/javis.png" />
+    <meta name="author" content="Armando Pinzon" />
+    <title>SQL</title>
+    <link rel="icon" type="image/x-icon" href="IMG/awsIcon.png" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -21,9 +21,9 @@
 <body id="page-top">
     <!-- Navigation-->
     <!-- bg-primary da color a la barra de navegacion-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary3 fixed-top" id="sideNav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary4 fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">AWSjava</span>
+            <span class="d-block d-lg-none">Sentencias</span>
             <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
 
         </a>
@@ -32,13 +32,12 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="configuracion.html">Configuracion <span
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="sentencias.html">Sentencias</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="mySQL.html">mySQL <span
                             class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="spring.html">Spring</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="logicas.html">Logicas</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="uml.html">UML</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="awsJava.html">AWSjava</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="springBoot.html">Spring Boot</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="instancias.html">postgres</a></li>
+                
+               
             </ul>
         </div>
     </nav>
@@ -50,7 +49,7 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h2 class="my-4">AWS
+                <h2 class="my-4">Sentencias
 
                 </h2>
 
@@ -64,78 +63,48 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h3 class="card-title">Instalar AWStoolkit eclipse</h3>
+                        <h3 class="card-title">Sentencias </h3>
 
                         <p class="card-text">
-
-                            lo primero es estar seguro de tener la ultima version del eclipse,
-                            para ello, en Eclipse, primero vamos a <b>Help/About Eclipse IDE/ </b>
-                            con lo cual se nos muestra una ventana con las caracteristica del
-                            software instalado.<br>
-                            luego vamos a <b>Help/Check for Updates</b> y actualizamos lo que
-                            nos indique el IDE.<br>
-                            Posteriormente nos dirigimos a la ruta <b>Help/Install new Software/</b>
-                            En la nueva ventana que se abre, en el buscador, indicamos la pagina
-                            de descarga <a href="https://aws.amazon.com/es/eclipse/"
-                                target="blank"><b>https://aws.amazon.com/eclipse </b></a> y damos click
-                            en el boton <b>add</b>, se abrira una nueva ventana donde nos pide
-                            un nombre para esa URL, le colocamos AWS.
-                            Seleccionamos los archivos que se presentan y procedemos con el boton next.
-
+                           
+                            
                         </p>
-
                         <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw1.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/mySQL/sq1.png" alt="Card image cap">
                         <p></p>
 
-                        <p class="card-text">Posteriomente nos abre otra ventana en donde nos indica lños software a
-                            Instalar
-                            la ceptacion de licencias y esperamos que el proceso termine, con lo cual nos pide reiniciar
-                            el IDE
+                        <p class="card-text">Despues de tener todas las tablas, para crear la relacion, entramos a la tabla que va a 
+                            tener el enlace, y a la pestaña <b>Estructura</b> y hacemos clic en <b>Vista de relaciones</b>
                         </p>
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw2.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/mySQL/sq2.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">Cuando reinicie Eclipse nos pedira las claves de acceso de AWS
+                        <p class="card-text"> A lo que se abre una nueva ventana, donde colocamos nombre a la relacion, 
+                            en el primer EditText, en la casilla de <b>Columna</b> colocamos el campo de la tabla tiene
+                            la llave foranea (donde se hace la relacion), en <b>Base de datos</b> el nombre de la BBDD a la que pertenece,
+                            luego la tabla que se llama <b>Tabla</b> y en <b>Columna</b> la primary Key de esa tabla.<br>
+                            en las casillas de <b>ON DELETE</b> y <b>ON UPDATE</b> colocamos en cascada, para que las actualizaciones
+                            se apliquen a todas las tablas anteriores.
                         </p>
+                        <img class="card-img-top" src="IMG/mySQL/sq3.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw3.png" alt="Card image cap">
-                        <p class="card-text">Ahora debemos proporcionar el <b>Access Key ID</b> y 
-                            <b>Secret Access Key</b>, para obtener entramos a nuestra cuenta de AWS
-                            como usuario IAM, en la esquina superior derecha damos clic en la pestaña de 
-                            usuario y seleccionamos mis credenciales de seguridad
+                        <p class="card-text">Para que el usuario entre se le envía el enlace URL de la cuenta
                         </p>
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw4.png" alt="Card image cap">
-
+                        <img class="card-img-top" src="IMG/IAM/ia4.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text"></p>
-                      
-                        <p class="card-text">damos clic en el boton <b>Crear una clave de acceso</b>, no podemos
-                            tener mas de dos si la cuenta es gratuita; esta nos proporciona
-                            un ID de acceso y una clave de acceso secreta, que solo lo muestra una vez,
-                            en la ventana que se crea, por lo cual debemos copiarla en un archivo para 
-                            poder usarla.
+                        <p class="card-text">Para configurar MFA (Autenticación multifactor), con lo cual se agrega un
+                            mecanismo adicional de verificación, a través de otro dispositivo hardware generador de
+                            códigos, seleccionamos el que permite emplear el celular: <b>Dispositivo MFA virtual</b>,
+                            observamos el listado de aplicaciones compatibles para leer el código QR y generar la
+                            autenticación: Authy, Duo Mobile, LastPass Authenticator, Microsoft Authenticator, Google
+                            Authenticator; escogemos la última y desde nuestros celular escaneamos el código. En dos
+                            ocaciones para tener las dos claves solicitadas
                         </p>
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw5.png" alt="Card image cap">
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw6.png" alt="Card image cap">
-                        <p></p>
-                        <p class="card-text"></p>
-                      
-                        <p class="card-text">Cuando colocamos las claves en el eclipse, se despiega una ventana
-                            en donde se ven los servicio ofrecidos por AWS
-                        </p>
-                        <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/AWS/aw7.png" alt="Card image cap">
-                        <p></p>
+                        <img class="card-img-top" src="IMG/IAM/ia4.png" alt="Card image cap">
 
 
                     </div>
                     <div class="card-footer text-muted">
-                        Publicado en octubre 14, 2020 by
+                        Publicado en Septiembre 20, 2020 by
                         <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
                     </div>
                 </div>
@@ -147,11 +116,11 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h2 class="card-title">xxxx</h2>
-                        <p class="card-text">Defecto Android studio trae muy pocos
-                            colores en la paleta de opciones, para los atributos de los elementos de nuestra UI, si
-                            queremos que este una paleta amplia, podemos colocar los siguiente valores en el archivo
-                            <b>res/values/colors.xml</b></p>
+                        <h2 class="card-title">Configurar claves de acceso</h2>
+                        <p class="card-text">Se abre la <b>consola de IAM</b>/Users(usuarios)/ selecciona tu nombre de
+                            usuario <b>/Segurity credencial(credenciales de seguridad)/Create Access key</b><br>
+                            Para descargar el par de claves se elije <b>Download csv file</b>
+                            </b></p>
 
                         <img class="card-img-top" src="IMG/CONFIGURACION/colores.png" alt="Card image cap">
                         <p></p>
@@ -261,9 +230,9 @@
 
                 <!-- Side Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Guia JAVA</h5>
+                    <h5 class="card-header">Guia SQL</h5>
                     <div class="card-body">
-                        Este Blog aportar con instructivos para procedimientos comunes en Java, enfocado en servidores y
+                        Este Blog aportar con instructivos para procedimientos comunes con SQL, enfocado en servidores y
                         manejo de BBDD relacionales
                     </div>
                 </div>

@@ -6105,6 +6105,9 @@ a.close.disabled {
 .bg-primary3 {
   background-color: #512da8 !important;
 }
+.bg-primary4 {
+  background-color: #8b6104 !important;
+}
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
