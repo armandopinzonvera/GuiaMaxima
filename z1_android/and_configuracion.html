@@ -464,25 +464,109 @@
 
                         </pre>
 
-
-
-
-
-
-
                         <p></p>
                         <img class="card-img-top" src="IMG/CONFIGURACION/cv3.png" alt="Card image cap">
                         <p></p>
-
-
                     </div>
-
 
                     <div class="card-footer text-muted">
                         Posted on Febrero 22, 2020 by
                         <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
                     </div>
                 </div>
+                <!-- Blog Post -->
+
+                <div class="card mb-4">
+
+                    <div class="card-body">
+                        <h3 class="card-title" id="tth5">Spinner</h3>
+                        <p class="card-text">
+                            Colocamos el Elemento Spiner <code> &lt;Spinner </code> en el lugar donde queramos
+                            en nuestro <b>.xml</b>, le colocamos su etiqueta id <code> android:id="@+id/idspinner"</code>.<br>
+                            Los Items que va a tener el <i>Spinner</i>, se crean a travez de un archivo de recursos <b>(.xml)</b>.<br>
+                            Para lo cual seguimos la ruta: <b>res/values (C|D) new/values resources file</b>, a lo que nos abre une nueva
+                            ventana, en donde colocamos el nombre, para este caso: <i>Spinner_opciones.xml</i> y damos en ok.<br>
+                        </p>                       
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/za1.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                            Dentro de este archivo de recursos, generamos el <i>Array</i> de datos que vamos a presentar en el <b>combo</b>, mediante la etiqueta 
+                            <code>string-array</code>, en donde la propiedad <b>name=""</b>, se refiere al nombre del combo.<br>
+                            En el interior del <i>string-array</i>, colocamos cada uno de los elementos que queremos se vean, dentro de etiquetas
+                            <code>&lt;item&gt;</code>
+                        </p> 
+                        <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string-array name="combo_especies"&gt;
+        &lt;item&gt;especie 1&lt;/item&gt;
+        &lt;item&gt;especie 2&lt;/item&gt;
+        &lt;item&gt;especie 3&lt;/item&gt;
+        &lt;item&gt;especie 4&lt;/item&gt;
+        &lt;item&gt;especie 5&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
+                        </code></pre>
+                        
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/za2.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                            Ahora colocamos la logica, en la clase <i>(.java)</i> del <b>GUI</b>, para eso hacemos la referencia, al elemento <i>Spinner</i> y al 
+                            <i>TextView</i>, declarandolos y utilizando el metodo <b>findViewById()</b>, procedemos relacionando ese elemento del <i>.xml</i> del GUI 
+                            con el archivo de recuersos, en donde se encuentran los <b>items</b>, para ello colocamos, ya sea en el metodo <b>onCreate</b>, o en un metodo
+                            que tengamos para ese fin: <br>
+<code> ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this, R.array.combo_especies, android.R.layout.simple_spinner_item);</code><br>
+
+                            Ese adaptador se lo agregamos al elemento <i>Spinner</i>, que previamente habiamos declarado:<br>
+                            <code>spinner_especies.setAdapter(adapter);</code>
+                        
+
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/za3.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/CONFIGURACION/za4.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                          Procedemos colocando un evento para cuando se presiona un elemento del <i>Spinner</i>, mediante: el metodo <b>setOnItemSelectedListener()</b>
+                          a la variable spinner.<br>
+                          <code>spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()</code><br>
+                          con lo cual se abren dos metodos sobrescritos; po rlo pronto solo colocamos un <b>Toast</b>, pero en el se observa, como se relacionanan
+                          los alementos de la funcion.                   
+                            </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/CONFIGURACION/za5.png" alt="Card image cap">
+                        <pre><code>
+    public void spinnerManager(){
+        ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this,
+                R.array.combo_especies, android.R.layout.simple_spinner_item);
+        spinner_especies.setAdapter(adapter);
+
+        spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+                Toast.makeText(VistaTransecto.this,
+                        "Seleccion: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView&lt;?&gt; parent) {
+            }
+        });
+    }                          
+                                                    </code></pre>
+
+
+
+                    </div>
+
+
+                    <div class="card-footer text-muted">
+                        Posted on febrero 22, 2021 by
+                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                    </div>
+                </div>
+
 
 
 
