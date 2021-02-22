@@ -19,7 +19,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary1 fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Fragments</span>
+                <span class="d-block d-lg-none">RecyclerView</span>
                <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
                
             </a>
@@ -47,7 +47,7 @@
               <!-- Blog Entries Column -->
               <div class="col-md-8">
         
-                <h2 class="my-4">Fragments
+                <h2 class="my-4">RecyclerView
                   
                 </h2>
         
@@ -60,49 +60,280 @@
         <!-- Blog Post -->
         <div class="card mb-4">
           
-            <div class="card-body" id="tt1"> <h3> Habilitar Fragment </h3>
+            <div class="card-body" id="tt1"> <h3> Estructura</h3>
              
               <p class="card-text">
 
-                Lo primero es que debemos tener un <i>activity</i> tipo Fragment, <b>extends Fragment</b>, que sera el Fragment
-                propiamente dicho, y un componente FrameLayout <b>etiqueta: <code>&lt; FrameLayout &gt;</code></b>
-                en el  <b>.xml</b> del activity con el que interactua el usuario, es decir que ambos activitys tienen este <i>FrameLayout</i> <br>
-
-                Entonces en el Activity que interactua el usuario, declaramos una Variable general <b>Fragment</b> (<i> Fragment fragment_mapa;</i>)
-                mientras en el metodo <b>onCreate</b> inicializamos esa variable con la clase del Fragment propiamente dicho  (<i> fragment_mapa = new MapFragment();</i>).<br>
-
-                Luego llamamos los metodos:<br> 
-                <b>getSupportFragmentManager().beginTransaction().add(</b>R.id.marco_fragment, fragment_mapa<b>).commit()</b>;<br>
-                Colocando como parametros del metodo <b>add()</b>, la referencia al <code>&lt; FrameLayout &gt;</code> del activity
-                con el que interactua el usuario, y la variable <b>Fragment</b>, que habiamos declarado.                
+                Lo primero es incluir en el build.grade las dependecias para el Recycler-View:
+                por la ruta: File/Project Structure/Dependencies, selecionamos +/Library Dependency
+                Colocando las siguientes: <br> <b class="text-dark">
+                androidx.recyclerview:recyclerview:1.2.0-alpha06
+                androidx.recyclerview:recyclerview-selection:1.1.0       </b>       
 
                </p>
                <p></p>
               
-            <img class="card-img-top" src="IMG/FRAGMENT/ff1.png" alt="Card image cap">
+            <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv1.png" alt="Card image cap">
             <p></p>
-            <pre class="pre">
-              <code>
-                Fragment fragment_mapa;
+            <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv2.png" alt="Card image cap">
+            <p></p>
+            <p class="card-text">
 
-                @Override
-                protected void onCreate(Bundle savedInstanceState) {
-                    super.onCreate(savedInstanceState);
-                    setContentView(R.layout.activity_vista_transecto);
+              En el .xml de la GUI, cambiamos el Layout principal a LinearLayot con
+              orientacion vertical. 
+              alli agregamos el componente recycler, que ya se genera por la importacion 
+              de la libreria:<b class="text-dark">androidx.recyclerview.widget.RecyclerView</b>
+              y le colocamos un ID: "@+id/recyclerId"      
 
-                    fragment_mapa = new MapFragment();
-                    getSupportFragmentManager().beginTransaction()
-                                         .add(R.id.marco_fragment, fragment_mapa).commit();
-                }
-               </code>
-               </pre> 
+             </p>
              <p></p>
-           
-           
+             <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv4.png" alt="Card image cap">
+             <p></p>
+
+             <p class="card-text">
+
+              Creamos un Elemento en la carpeta <b class="text-dark">Layout = Resource file</b>
+              el cual es un nuevo .xml que contendra lo que aparece en el 
+              recycler     
+
+             </p>
+             <p></p>
+             <img class="card-img-top" id="xssx" src="IMG/RECYCLER-VIEW/rv5.png" alt="Card image cap">
+             <p></p>
+             <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv6.png" alt="Card image cap">
+             <p></p>
+
+             <p class="card-text">
+
+              Creamos una nueva clase que sera el adaptador para cargar la informacion
+              al <i>"Resource file"</i>, a la cual llamaremos Adapter- datos
+              hacemos extends a <code class="text-dark">RecyclerView.Adapter&lt;&gt;</code><br>
+             <code class="text-dark">public class AdaptadorRecycler extends RecyclerView.Adapter&lt;AdaptadorRecycler.ViewHolderDatos&gt; {</code> <br>
+
+              como nos aparece en rojo la palabra <b class="text-dark">ViewHolderDatos</b>, la declaramos como una subclase
+              dentro de nuestra clase principal (public class ViewHolderDatos{)<br>
+
+              Como la clase principal marca error, se le da click en el bonbillo
+              e indicamos implementar metodos y nos implementa los metodos: <b class="text-dark">onCreateViewHolder()</b>,
+              <b class="text-dark">onBindViewHolder()</b> y <b class="text-dark">getItemCount()</b>.<br>
+
+              Ahora marca error en la declaracion de la clase principal, nos colocamos
+              sobre la señal y aceptamos la recomendacion: <b class="text-dark">Make ViewHolderDatos Extends...</b>
+              indicando que la subclase debe hacer extends, quedando asi:<br>  
+              <b class="text-dark">public class ViewHolderDatos extends RecyclerView.ViewHolder {</b><br>
+              
+              luego marca error para esa subclase, indicando que se cree el constructor
+              y aceptamos. ya quedando la clase completa.    
+
+             </p>
+             <p></p>
+             <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv7.png" alt="Card image cap">
+             <p></p>
+
+            <pre class="pre-scrollable">
+              <code>
+                import android.view.View;
+                import android.view.ViewGroup;
+                import androidx.annotation.NonNull;
+                import androidx.recyclerview.widget.RecyclerView;
                 
+                public class AdaptadorRecycler extends RecyclerView.Adapter<AdaptadorRecycler.ViewHolderDatos> {
+                
+                    @NonNull
+                    @Override
+                    public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        return null;
+                    }
+                    @Override
+                    public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
+                
+                    }
+                    @Override
+                    public int getItemCount() {
+                        return 0;
+                    }
+                    public class ViewHolderDatos extends RecyclerView.ViewHolder {
+                
+                        public ViewHolderDatos(@NonNull View itemView) {
+                            super(itemView);
+                        }
+                    }
+                
+                } </code></pre> 
+             <p></p>
+             <p class="card-text">
+
+           Dentro de esa clase, generamos una referencia a la lista que se va a generar, mediante una variable
+           general <code class="text-dark">ArrayList&lt;String&gt;listDatos; </code>, ademas generamos un constructor
+           con esta variable 
+             </p>
+             <p></p>
+             <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv8.png" alt="Card image cap">
+             <p></p>
+             <p class="card-text">
+             Seguimos en esa clase y ahora, en la subclase <b>ViewHolderDatos</b> generamos una referencia al componente <b>(ó todos los componentes que se tengan)</b>
+            en Resource file <a href="#xssx">(item_list_recycler.xml)</a>; con Componente, me refiero a <i>TextView, EditText ..</i>
+            y todos esos elementos que estan dentro del .xml; que hasta ahora solo hay un <i>editText</i> con <i>id: tv_datorecycler.</i><br>
+             La referencia se hace llamando esos componentes con <b>findViewById(R.id.--)</b>, como se hace tradicionalmente entre el
+             archivo <i>.java</i> y <i>.xml</i>, pero incluyendo el objeto <i>View</i> del constructor de esta subclase <b>itemView</b>,
+             quedando de la siguiente manera:<br>
+             <code class="text-dark">tv_datorecycler = itemView.findViewById(R.id.tv_datorecycler);</code>
+
+
+               </p>
+               <p></p>
+               <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv9.png" alt="Card image cap">
+               <p></p>
+               <p class="card-text">
+               Seguimos en la misma clase, pero ahora vamos al metodo <b>onCreateViewHolder()</b>, el cual enlaza esta clase - adaptador 
+               con el Resource file <a href="#xssx">(item_list_recycler.xml)</a>, entonces dentro de el, Creamos un objeto de la clase 
+               <b>View</b> que inicialice como <b>LayoutInflater</b>:<br>
+               <code class="text-dark"> View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_recycler, null, false);</code> 
+               Ademas, retornando:
+               <code>new ViewHolderDatos(view)</code>
+                 </p>
+                 <p></p>
+                 <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv10.png" alt="Card image cap">
+                 <p></p>
+
+                 <p class="card-text">
+                  Seguimos en la misma clase, pero ahora vamos al metodo <b>getItemCount()</b>, el cual retorna el tamaño de la 
+                  lista de datos, entonces le colocamos en el <b>return</b>: la variable <b>ArrayList</b>, que habiamos creado, 
+                  con el metodo <b>.size()</b>:<br>
+                  <code>return ListDatos.size();</code><br>
+                  Ahora vamos al metodo <b>onBindViewHolder()</b>, que se encarga dela comunicacion entre esta clase-adaptador 
+                  y la subclase <b>ViewHolderDatos</b>, que esta adentro. Entonces le colocamos el objeto <b>holder</b> y escribimos 
+                  un metodo llamado <b>asignarDatos()</b> que aun no existe(indicaremos a AS, que lo cree <b>dentro de la subclase ViewHolderDatos)</b>, con parametros:
+                   <b>(listDatos.get(position))</b>.<br>
+
+                    </p>
+                    <p></p>
+                    <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv11.png" alt="Card image cap">
+                    <p></p>
+
+
+                    <p class="card-text">
+                      En este metodo recien creado, <b>asignarDatos(String s)</b>, le indicamos que coja la referencia al elemento TextView
+                        que habiamos hecho previamente y le asigne contenido, mediante el metodo <b>setText()</b> con el String "s"
+                        que esta como parametro del metodo.
+    
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv12.png" alt="Card image cap">
+                        <p></p>
+                       <pre class="pre-scrollable">
+                           <code>import android.view.LayoutInflater;
+                            import android.view.View;
+                            import android.view.ViewGroup;
+                            import android.widget.TextView;
+                            import androidx.annotation.NonNull;
+                            import androidx.recyclerview.widget.RecyclerView;
+                            import java.util.ArrayList;
+                            
+                            public class AdaptadorRecycler extends RecyclerView.Adapter<AdaptadorRecycler.ViewHolderDatos> {
+                            
+                                ArrayList<String> listDatos;
+                            
+                                public AdaptadorRecycler(ArrayList<String> listDatos) {
+                                    this.listDatos = listDatos;
+                                }
+                            
+                                @NonNull
+                                @Override
+                                public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                            
+                                    View view = LayoutInflater.from(parent.getContext())
+                                            .inflate(R.layout.item_list_recycler, null, false);
+                            
+                                    return new ViewHolderDatos(view);
+                                }
+                                @Override
+                                public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
+                                    holder.asignarDatos(listDatos.get(position));
+                                }
+                                
+                                @Override
+                                public int getItemCount() {
+                                    return listDatos.size();
+                                }
+                            
+                                public class ViewHolderDatos extends RecyclerView.ViewHolder {
+                            
+                                    TextView tv_datorecycler;
+                            
+                                    public ViewHolderDatos(@NonNull View itemView) {
+                                        super(itemView);
+                                        tv_datorecycler = itemView.findViewById(R.id.tv_datorecycler);
+                                    }
+                                    public void asignarDatos(String datos) {
+                                        tv_datorecycler.setText(datos);
+                                    }
+                                }
+                            } </code></pre> 
+                         <p></p>
+
+                         <p class="card-text">
+                          Dejamos listo el adaptador, nos dirijimos entonces a la clase del <b>GUI</b> que para este ejemplo
+                          es <i>class Continuar</i>, en donde colocamos dos elementos:<br>
+                          una lista igual al de la clase adaptador:<code> ArrayList&lt;String&gt; listDatos;</code> y una referencia a
+                          al <code> &lt;androidx.recyclerview.widget.RecyclerView /&gt; </code>, que se creo en el <b>.xml</b>, de esta 
+                          misma clase.<br>
+                          Este ultimo como un objeto <b>RecyclerView recyclerView;</b> <br>
+                          luego lo instanciamos dentro del metodo <b>onCreate()</b>, enlazando con este elemento, usando el
+                          metodo <b>findViewById</b>, y le agregamos el metodo <i>setLayoutManager()</i><br>
+                          <code>recyclerView = findViewById(R.id.recyclerId);<br>
+                            recyclerView.setLayoutManager(new LinearLayoutManager(this));</code> <br>
+                          Seguimos en el <i>onCreate</i>, y debajo de lo anterior, instanciamos <b>listDatos</b><br>
+                          <code>listDatos = new ArrayList&lt;String>();</code><br>
+                          y colocamos un pequeño bucle <b>for</b> para probar el adecuado despliegue, en donde la lista se envia al 
+                          adaptador para que inicie todo el proceso, instanciando el adaptador<br>
+                          <code>AdaptadorRecycler adaptadorRecycler = new AdaptadorRecycler(listDatos);<br>
+                            recyclerView.setAdapter(adaptadorRecycler); </code><br>                          
+       
+                            </p>
+                            <p></p>
+                            <img class="card-img-top" src="IMG/RECYCLER-VIEW/rv13.png" alt="Card image cap">
+                            <p></p>
+
+
+                            <pre class="pre-scrollable">
+                              <code>public class Continuar extends AppCompatActivity {
+
+                                ArrayList<String> listDatos;
+                                RecyclerView recyclerView;
+                            
+                                EditText et_c_nombreproyecto;
+                                TextView tv_c_transecto, tv_c_sumaTransecto;
+                                ConexionSQLite conexionSQLite;
+                            
+                                @Override
+                                protected void onCreate(Bundle savedInstanceState) {
+                                    super.onCreate(savedInstanceState);
+                                    setContentView(R.layout.activity_continuar);
+                            
+                                    conexionSQLite = new ConexionSQLite(getApplicationContext(), UtilidadesSQLite.DDBB_NAME, null, 1 );
+                            
+                                    et_c_nombreproyecto =  findViewById(R.id.et_c_nombreProyecto);
+                                    tv_c_transecto = findViewById(R.id.tv_c_transectos);
+                                    recyclerView = findViewById(R.id.recyclerId);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            
+                                    listDatos = new ArrayList<String>();
+                            
+                                    for(int i = 0; i &lt; 20; i++){
+                                        listDatos.add("dato: "+i+" ");
+                                    }
+                                    AdaptadorRecycler adaptadorRecycler = new AdaptadorRecycler(listDatos);
+                                    recyclerView.setAdapter(adaptadorRecycler);
+                                }
+
+
+                             </code>
+                             </pre>   
+
             </div>
             <div class="card-footer text-muted">
-              Publicado en febrero 20, 2021 by
+              Publicado en febrero 21, 2021 by
               <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
             </div>
           </div>
