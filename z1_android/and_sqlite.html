@@ -366,6 +366,104 @@
     </div>
   </div>
 
+   <!-- Blog Post -->
+
+   <div class="card mb-4">
+
+    <div class="card-body">
+      <h3 class="card-title" id="tt3">LLenar Spinner de SQLite</h3>
+      <p class="card-text">
+        Ya debemos tener construidos, todos los elementos relacionados con nuestro <a href="and_configuracion.html" target="blank">Spinner</a>, 
+        Entonces en la clase del GUI, en donde tenemos referenciado este elemento.<br>
+        Iniciamos creando dos <b><code>ArrayList&lt;&gt;</code></b> uno que contendra la informacion que muestra el <i>Spinner</i> y el otro para 
+        la informacion que se va a mapear en la BBDD:<br>, el cual se va a referenciar en una clase <i>entidad</i> en donde estan declarados esos campos
+        como variables, con su constructores, metodos getters y setters. aca es llamado:<b>Entidad_Ttrack</b><br>
+        <code>
+          Spinner spinner_especies;<br>
+          ArrayList&lt;String&gt; listaEspecies;<br>
+          ArrayList&lt;<b>Entidad_Ttrack</b>&gt; entidadesEspecies;<br> </code><br>
+        Adicionalmente generamos la variable de conexion a la BBDD  
+
+      </p>
+      <img class="card-img-top" src="IMG/SQLite/za1.png" alt="Card image cap">
+      <p></p>
+      <p class="card-text">
+        Inicializamos la variable de conexion a la BBDD, en el onCreate:<br>
+        <code>conexionSQLite = new ConexionSQLite(this, UtilidadesSQLite.DDBB_NAME, null, 1);</code>
+        Creamos un metodo para realizar la consulta con la BBDD, para este caso, llamado <i>spinnersqlite()</i>,
+        en donde colocamos:
+      </p>
+          
+      <img class="card-img-top" src="IMG/SQLite/sc2.png" alt="Card image cap">
+      <p class="card-text"></p>
+      <pre class="pre-scrollable">
+        <code>
+  // ****** SQLite ********
+    ConexionSQLite conexionSQLite;
+    // ****** Spinner ********
+    Spinner spinner_especies;
+    ArrayList&lt;String&gt; listaEspecies;
+    ArrayList&lt;Entidad_Ttrack&gt; entidadesEspecies;
+
+  ///////////////////////////////////////////        
+private void spinnerlist() {
+        listaEspecies = new ArrayList&lt;String&gt;();
+        listaEspecies.add("seleccione");
+
+        for(int i = 0; i&lt;entidadesEspecies.size(); i++){
+            listaEspecies.add(entidadesEspecies.get(i).getEspecie());
+        }
+    }
+
+    public void spinnersqlite(){
+        // ****** SQLite ********
+        SQLiteDatabase ddbb =conexionSQLite.getReadableDatabase();
+        Entidad_Ttrack entidad_ttrack= null;
+        entidadesEspecies = new ArrayList&lt;Entidad_Ttrack&gt;();
+
+        Cursor cursor = ddbb.rawQuery("SELECT DISTINCT especie FROM "+ UtilidadesSQLite.TABLA_TRACK, null);
+        while(cursor.moveToNext()){
+            entidad_ttrack = new Entidad_Ttrack();
+            entidad_ttrack.setEspecie(cursor.getString(0));
+         //   entidad_ttrack.setDensidad(cursor.getInt(1));
+
+            entidadesEspecies.add(entidad_ttrack);
+        }
+        spinnerlist();
+       ////////////////////////////////
+        ArrayAdapter&lt;CharSequence&gt; adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listaEspecies);
+        spinner_especies.setAdapter( adapter);
+        spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+                et_especie.setText(parent.getItemAtPosition(position).toString());
+                Toast.makeText(VistaTransecto.this,
+                        "Seleccion: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView&lt;?&gt; parent) {
+            }
+        });
+
+    }          
+        </code>
+    </pre>
+      
+      
+
+    </div>
+    <div class="card-footer text-muted">
+      Publicado en febrero 23, 2021 por
+      <a href="https://github.com/armandopinzonvera" target="blank">Armando Pinzon</a>
+    </div>
+  </div>
+
+
+
+
+
+
+
 
         
         <!--/////////////////// END Post -->
