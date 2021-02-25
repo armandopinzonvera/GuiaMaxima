@@ -53,7 +53,7 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h2 class="my-4">RecyclerView
+        <h2 class="my-4">List-Views
 
         </h2>
 
@@ -67,8 +67,8 @@
         <div class="card mb-4">
 
           <div class="card-body" id="tt1">
-            <h3> Estructura</h3>
-
+            <h3> Recycler-View</h3>
+            <h4> Estructura</h4>
             <p class="card-text">
 
               Lo primero es incluir en el build.grade las dependecias para el Recycler-View:
@@ -415,6 +415,78 @@
             <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
           </div>
         </div>
+
+
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+
+          <div class="card-body" id="tt1">
+            <h3> Spinner </h3>
+
+            <p class="card-text">
+               lo primero es tener un elemento <code>&lt;Spinner</code> en el archivo <b>.xml</b> de la GUI en donde
+               queremos que aparesca el lista de la informacion: 
+              <code>
+                &lt;Spinner<br>
+                android:id="@+id/spinner_especies"<br>
+                android:layout_marginTop="5dp"<br>
+                android:layout_marginBottom="5dp"<br>
+                android:layout_width="match_parent"<br>
+                android:layout_height="wrap_content" /&gt;<br>  </code>
+              Ese <b>Spinner</b> tenemos que relacionarlo en la clase de esa activity, como una variable objeto, como se hace
+              hace con los demas Wigets, primero declarandola y luego en el metodo <b>onCreate</b> inicializandola:<br>
+              <code>
+                Spinner spinner_especies;<br>
+                spinner_especies = (Spinner) findViewById(R.id.spinner_especies);<br>
+              </code>
+                El <i>Spinner</i> se va a construir a partir de un <b>ArrayList</b>, por lo cual declaramos uno, que indica el tipo
+                de variable:<br>
+                <code> ArrayList&lt;String&gt; listaEspecies;</code><br>
+                Ahora utilizamos un adaptador para acomodar ese array a nuestro Spinner, con el metodo <code>ArrayAdapter&lt;&gt;</code>,
+                en donde el segundo parametro del metodo se refiere al tipo de Layout:<br>
+                <code>ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listaEspecies);</code>
+                Entonces el elemento de la clase Spinner que ya habiamos declarado le agregamos ese adaptador, mediante el metodo <b>setAdapter()</b><br>
+                <code> spinner_especies.setAdapter( adapter);</code>
+              
+                para darle funcionalidad a los elementos del Spinner, utilizamos el metodo <b>setOnItemSelectedListener()</b>: <br>
+
+                <pre><code>
+        ArrayAdapter&lt;CharSequence&gt; adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listaEspecies);
+        spinner_especies.setAdapter( adapter);
+        spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+                et_especie.setText(parent.getItemAtPosition(position).toString());
+                Toast.makeText(VistaTransecto.this,
+                        "Seleccion: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView&lt;?&gt; parent) {
+            }
+        }); </code></pre>
+
+
+              </p>
+            <p></p>
+
+            <img class="card-img-top" src="IMG/RECYCLER-VIEW/sp1.png" alt="Card image cap">
+            <p></p>
+           
+          </div>
+          <div class="card-footer text-muted">
+            Publicado en febrero 25, 2021 by
+            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
 
         <!-- Blog Post -->
         <!--
