@@ -270,6 +270,41 @@
         </div>
 
 
+        
+        <!-- Blog Post -->
+
+        <div class="card mb-4">
+          
+          <div class="card-body">
+            <h3 class="card-title" id="tt2">Dialogo Alerta</h3>
+            <p class="card-text">
+              La clase <b>AlertDialog.Builder</b> permite generar una ventana de abvertencia para enviar un mensaje
+              o colocarle botones adentro, para este caso se va a colocar dentro de un metodo para integrar las funciones
+              que se le van a colocar.<br>
+              el metodo tiene como parametros el <i>String</i>, que va dentro de <b>setTitle()</b> y el String que dentro 
+              de <b>setMessage()</b>, de manera que cuando se llame el metodo, la ventana se personaliza con esa enviarInformacion.
+            </p>
+<pre><code> 
+  showMessage("Nuevo proyecto creado: ", et_nombreProyecto.getText().toString());
+-----------------
+  public void showMessage(String title, String message){
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setCancelable(true);
+    builder.setTitle(title);
+    builder.setMessage(message);
+    builder.show();
+}
+</code></pre>
+
+              <img class="card-img-top" src="IMG/LOGICAS/log5.png" alt="Card image cap">
+            
+          </div>
+          <div class="card-footer text-muted">
+            Posted on marzo 2, 2021 by
+            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+          </div>
+        </div>
+
 
 
     
