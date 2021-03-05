@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="Armando Pinzon" />
-    <title>SQL</title>
+    <title>SQLite</title>
     <link rel="icon" type="image/x-icon" href="IMG/awsIcon.png" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <!-- bg-primary da color a la barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary4 fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Sentencias</span>
+            <span class="d-block d-lg-none">SQLite</span>
             <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
 
         </a>
@@ -32,7 +32,7 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="sentencias.html">Sentencias</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="sqlite.html">SQLite</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="mySQL.html">mySQL <span
                             class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="instancias.html">postgres</a></li>
@@ -49,7 +49,7 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h2 class="my-4">Sentencias
+                <h2 class="my-4">SQLite
 
                 </h2>
 
@@ -63,43 +63,46 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h3 class="card-title">Sentencias </h3>
+                        <h3 class="card-title">Instalar tools<br>
+                        en Windows </h3>
 
                         <p class="card-text">
-                           
+                           Se debe descargar la carpeta de instalacion <a href="https://www.sqlite.org/download.html" target="blank">sqlite-tool-win32-x86</a> que se encuentra en el 
+                           apartado <b>Precompiled Binaries for Windows</b>, teniendo presente que el archivo dice: <b>tools</b> y lo descomprimimos
+                           dentro de una carpeta en donde se generaran tres archivos.
                             
                         </p>
                         <p class="card-text"></p>
-                        <img class="card-img-top" src="IMG/mySQL/sq1.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SQLite/ql1.png" alt="Card image cap">
                         <p></p>
 
-                        <p class="card-text">Despues de tener todas las tablas, para crear la relacion, entramos a la tabla que va a 
-                            tener el enlace, y a la pestaña <b>Estructura</b> y hacemos clic en <b>Vista de relaciones</b>
+                        <p class="card-text">
+                            Para ejecutar los archivos, tenemos que abrir la consola de window, mediante <b>shift + C|D</b>, seleccionamos la opcion de 
+                            <b>abrir ventana de PowerShell aqui</b>
                         </p>
-                        <img class="card-img-top" src="IMG/mySQL/sq2.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG//SQLite/ql2.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text"> A lo que se abre una nueva ventana, donde colocamos nombre a la relacion, 
-                            en el primer EditText, en la casilla de <b>Columna</b> colocamos el campo de la tabla tiene
-                            la llave foranea (donde se hace la relacion), en <b>Base de datos</b> el nombre de la BBDD a la que pertenece,
-                            luego la tabla que se llama <b>Tabla</b> y en <b>Columna</b> la primary Key de esa tabla.<br>
-                            en las casillas de <b>ON DELETE</b> y <b>ON UPDATE</b> colocamos en cascada, para que las actualizaciones
-                            se apliquen a todas las tablas anteriores.
+                        <p class="card-text"> 
+                            en la ventana de <b>PowerShell</b> primero nos ubicamos en la carpeta donde se encuentran nuestros archivos,
+                            utilizando los comandos <b>ls, cd</b>; o pondemos hacer la apertura del <i>powerShell</i> desde la carpeta.<br>
+                            ya estando alli ubicados, escribimos <b>.\sqlite3</b>, a lo cual, aparece la version del software y otros mensajes
                         </p>
-                        <img class="card-img-top" src="IMG/mySQL/sq3.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SQLite/ql3.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">Para que el usuario entre se le envía el enlace URL de la cuenta
+                        <p class="card-text">
+                            Para tener acceso a la carpeta desde cualquier lugar del pc, creamos una carpeta en <b>Disco local(C:)</b>, en este caso 
+                            llamamos <i>src</i>, en ella pegamos la carpeta que contiene los tres archivos, copiamos la direccion: <i>C:\src\sqlite-tools-win32-x86-3340100</i><br>
+                            luego vamos a <b>Este Equipo / propiedades</b> y en <b>configuracion avanzada del sistema</b> en <b>Opciones avanzada /variables de entorno</b>, damos doble click 
+                            en la palabra <b>Path</b> que se encuentra en un listado de variables; a lo cual se abre una nueva ventana.<br>
+                            damo click en el boton <b>nuevo</b>, se abre un espacio en el listado, donde pegamos la direccion que teniamos y luego damos en aceptar en todo.
+
                         </p>
-                        <img class="card-img-top" src="IMG/IAM/ia4.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SQLite/ql4.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">Para configurar MFA (Autenticación multifactor), con lo cual se agrega un
-                            mecanismo adicional de verificación, a través de otro dispositivo hardware generador de
-                            códigos, seleccionamos el que permite emplear el celular: <b>Dispositivo MFA virtual</b>,
-                            observamos el listado de aplicaciones compatibles para leer el código QR y generar la
-                            autenticación: Authy, Duo Mobile, LastPass Authenticator, Microsoft Authenticator, Google
-                            Authenticator; escogemos la última y desde nuestros celular escaneamos el código. En dos
-                            ocaciones para tener las dos claves solicitadas
+                        <p class="card-text">
+                            ahora si abrimos la consola de systema <b>windows + r : cmd</b> y escrimos el comando <b>sqlite3</b> ya tenemos acceso al software
                         </p>
-                        <img class="card-img-top" src="IMG/IAM/ia4.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SQLite/ql5.png" alt="Card image cap">
 
 
                     </div>
