@@ -58,9 +58,9 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h2 class="my-4">Configuracion
+                <h3 class="my-4">Configuracion
 
-                </h2>
+                </h3>
 
                 <!-- Blog Post -->
                 <!-- 
@@ -133,7 +133,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         Publicado en Julio 24, 2020 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@
 
                     <div class="card-footer text-muted">
                         Posted on Agosto 12, 2020 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -200,7 +200,7 @@
 
                     <div class="card-footer text-muted">
                         Posted on Septiembre 9, 2020 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -237,7 +237,7 @@
                     </div>
                     <div class="card-footer text-muted">
                         Publicado en enero 12, 2021 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -262,7 +262,7 @@
 
                     <div class="card-footer text-muted">
                         Posted on febrero 9, 2021 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -315,7 +315,7 @@
 
                     <div class="card-footer text-muted">
                         Publicado en febrero 19, 2021 by
-                        <a href="#">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info" >Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -331,7 +331,7 @@
                             gradle,
                             por la ruta: File/Project Structure/Dependencies,: +/Library Dependency<br>
                             Nos dirigimos a la Pagina de <a href="https://material.io/resources/icons/?style=baseline"
-                                Target="blank">Material Design</a>
+                                Target="blank" class="text-info">Material Design</a>
                             podemos colocar la palabra de interes en el buscador de la esquina superior izquiera, dar
                             click sobre
                             el icono y undir el boton de <b>Selected Icon</b> para descargarlo en tamaño <b>android</b>,
@@ -354,11 +354,11 @@
                         <p class="card-text">
                             Ahora en el <i>.xml</i> donde queremos tener las <i>cardView</i> cambiamos el <i>Layout</i>
                             que originalmente viene
-                            por <code>&lt;androidx.cardview.widget.CardView</code>, ademas a este le agregamos las
+                            por <code class="text-dark" >&lt;androidx.cardview.widget.CardView</code>, ademas a este le agregamos las
                             propiedades:<br>
                         </p>
                         <pre class="pre-scrollable">
-                                <code>
+                                <code class="text-dark">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -375,11 +375,11 @@
                         <p class="card-text">
                             Ahora en el <i>.xml</i> donde queremos tener las <i>cardView</i> cambiamos el <i>Layout</i>
                             que originalmente viene
-                            por <code>&lt;androidx.cardview.widget.CardView</code>, ademas a este le agregamos las
+                            por <code class="text-dark">&lt;androidx.cardview.widget.CardView</code>, ademas a este le agregamos las
                             propiedades:<br>
                         </p>
                         <pre class="pre-scrollable">
-                            <code>
+                            <code class="text-dark">
                                 &lt;?xml version="1.0" encoding="utf-8"?&gt;
                                 &lt;androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     android:layout_width="match_parent"
@@ -471,7 +471,7 @@
 
                     <div class="card-footer text-muted">
                         Posted on Febrero 22, 2020 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
                 <!-- Blog Post -->
@@ -481,8 +481,8 @@
                     <div class="card-body">
                         <h3 class="card-title" id="tth5">Spinner</h3>
                         <p class="card-text">
-                            Colocamos el Elemento Spiner <code> &lt;Spinner </code> en el lugar donde queramos
-                            en nuestro <b>.xml</b>, le colocamos su etiqueta id <code> android:id="@+id/idspinner"</code>.<br>
+                            Colocamos el Elemento Spiner <code class="text-dark"> &lt;Spinner </code> en el lugar donde queramos
+                            en nuestro <b>.xml</b>, le colocamos su etiqueta id <code class="text-dark"> android:id="@+id/idspinner"</code>.<br>
                             Los Items que va a tener el <i>Spinner</i>, se crean a travez de un archivo de recursos <b>(.xml)</b>.<br>
                             Para lo cual seguimos la ruta: <b>res/values (C|D) new/values resources file</b>, a lo que nos abre une nueva
                             ventana, en donde colocamos el nombre, para este caso: <i>Spinner_opciones.xml</i> y damos en ok.<br>
@@ -492,11 +492,11 @@
                         <p></p>
                         <p class="card-text">
                             Dentro de este archivo de recursos, generamos el <i>Array</i> de datos que vamos a presentar en el <b>combo</b>, mediante la etiqueta 
-                            <code>string-array</code>, en donde la propiedad <b>name=""</b>, se refiere al nombre del combo.<br>
+                            <code class="text-dark">string-array</code>, en donde la propiedad <b>name=""</b>, se refiere al nombre del combo.<br>
                             En el interior del <i>string-array</i>, colocamos cada uno de los elementos que queremos se vean, dentro de etiquetas
-                            <code>&lt;item&gt;</code>
+                            <code class="text-dark">&lt;item&gt;</code>
                         </p> 
-                        <pre><code>
+                        <pre><code class="text-dark">
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;resources&gt;
     &lt;string-array name="combo_especies"&gt;
@@ -517,10 +517,10 @@
                             <i>TextView</i>, declarandolos y utilizando el metodo <b>findViewById()</b>, procedemos relacionando ese elemento del <i>.xml</i> del GUI 
                             con el archivo de recuersos, en donde se encuentran los <b>items</b>, para ello colocamos, ya sea en el metodo <b>onCreate</b>, o en un metodo
                             que tengamos para ese fin: <br>
-<code> ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this, R.array.combo_especies, android.R.layout.simple_spinner_item);</code><br>
+<code class="text-dark"> ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this, R.array.combo_especies, android.R.layout.simple_spinner_item);</code><br>
 
                             Ese adaptador se lo agregamos al elemento <i>Spinner</i>, que previamente habiamos declarado:<br>
-                            <code>spinner_especies.setAdapter(adapter);</code>
+                            <code class="text-dark">spinner_especies.setAdapter(adapter);</code>
                         
 
                         </p>
@@ -531,13 +531,13 @@
                         <p class="card-text">
                           Procedemos colocando un evento para cuando se presiona un elemento del <i>Spinner</i>, mediante: el metodo <b>setOnItemSelectedListener()</b>
                           a la variable spinner.<br>
-                          <code>spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()</code><br>
+                          <code class="text-dark">spinner_especies.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()</code><br>
                           con lo cual se abren dos metodos sobrescritos; po rlo pronto solo colocamos un <b>Toast</b>, pero en el se observa, como se relacionanan
                           los alementos de la funcion.                   
                             </p>
                         <p></p>
                         <img class="card-img-top" src="IMG/CONFIGURACION/za5.png" alt="Card image cap">
-                        <pre><code>
+                        <pre><code class="text-dark">
     public void spinnerManager(){
         ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(this,
                 R.array.combo_especies, android.R.layout.simple_spinner_item);
@@ -563,7 +563,7 @@
 
                     <div class="card-footer text-muted">
                         Posted on febrero 22, 2021 by
-                        <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
 
@@ -578,10 +578,10 @@
                 <!-- Pagination -->
                 <ul class="pagination justify-content-center mb-4">
                     <li class="page-item">
-                        <a class="page-link" href="debugTest.html">&larr; Anterior</a>
+                        <a class="page-link" href="debugTest.html" class="text-info">&larr; Anterior</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="Git-Github.html">Siguiente &rarr;</a>
+                        <a class="page-link" href="Git-Github.html" class="text-info">Siguiente &rarr;</a>
                     </li>
                 </ul>
 
@@ -621,16 +621,16 @@
                             <div class="col-lg-6">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#tth1">Cambiar nombre Proyecto</a>
+                                        <a href="#tth1" class="text-info">Cambiar nombre Proyecto</a>
                                     </li>
                                     <li>
-                                        <a href="#tth2">Paleta de Colores</a>
+                                        <a href="#tth2" class="text-info">Paleta de Colores</a>
                                     </li>
                                     <li>
-                                        <a href="#tth3">Terminal windows</a>
+                                        <a href="#tth3" class="text-info">Terminal windows</a>
                                     </li>
                                     <li>
-                                        <a href="#tth4">Cambiar Icono proyecto</a>
+                                        <a href="#tth4" class="text-info">Cambiar Icono proyecto</a>
                                     </li>
 
 
@@ -640,10 +640,10 @@
                             <div class="col-lg-6">
                                 <ul class="list-unstyled mb-0">
                                     <li>
-                                        <a href="#tth5">Quitar actionBar</a>
+                                        <a href="#tth5" class="text-info">Quitar actionBar</a>
                                     </li>
                                     <li>
-                                        <a href="#">Otro</a>
+                                        <a href="#" class="text-info">Otro</a>
                                     </li>
 
                                 </ul>

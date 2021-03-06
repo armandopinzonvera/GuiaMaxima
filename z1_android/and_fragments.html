@@ -66,7 +66,7 @@
               <p class="card-text">
 
                 Lo primero es que debemos tener un <i>activity</i> tipo Fragment, <b>extends Fragment</b>, que sera el Fragment
-                propiamente dicho, y un componente FrameLayout <b>etiqueta: <code>&lt; FrameLayout &gt;</code></b>
+                propiamente dicho, y un componente FrameLayout <b>etiqueta: <code class="text-dark">&lt; FrameLayout &gt;</code></b>
                 en el  <b>.xml</b> del activity con el que interactua el usuario, es decir que ambos activitys tienen este <i>FrameLayout</i> <br>
 
                 Entonces en el Activity que interactua el usuario, declaramos una Variable general <b>Fragment</b> (<i> Fragment fragment_mapa;</i>)
@@ -74,7 +74,7 @@
 
                 Luego llamamos los metodos:<br> 
                 <b>getSupportFragmentManager().beginTransaction().add(</b>R.id.marco_fragment, fragment_mapa<b>).commit()</b>;<br>
-                Colocando como parametros del metodo <b>add()</b>, la referencia al <code>&lt; FrameLayout &gt;</code> del activity
+                Colocando como parametros del metodo <b>add()</b>, la referencia al <code class="text-dark">&lt;FrameLayout&gt;</code> del activity
                 con el que interactua el usuario, y la variable <b>Fragment</b>, que habiamos declarado.                
 
                </p>
@@ -82,8 +82,8 @@
               
             <img class="card-img-top" src="IMG/FRAGMENT/ff1.png" alt="Card image cap">
             <p></p>
-            <pre class="pre">
-              <code>
+            <pre class="pre-scrollable">
+              <code class="text-dark">
                 Fragment fragment_mapa;
 
                 @Override
@@ -104,7 +104,7 @@
             </div>
             <div class="card-footer text-muted">
               Publicado en febrero 20, 2021 by
-              <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+              <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
             </div>
           </div>
   
@@ -120,7 +120,7 @@
               y los metodos para mostrar el mapa; en la carpeta del proyecto <b>CD/new/Fragment/Google Maps Fragment</b>.<br>
               Faltando solo hacer los vinculos descritos en el apartado anterior, agregar la dependencia en el <b>build.gradle</b>
                y agregar la <b>API KEY</b> en el Manifest.<br>
-              Para obtener el numero, se sigue el proceso descrito en el capitulo de <a href="and_mapLocation.html" target="blank">
+              Para obtener el numero, se sigue el proceso descrito en el capitulo de <a href="and_mapLocation.html" target="blank" class="text-info">
               <b>Android / Map-Location</b></a> de esta guia.<br>
               Para agregar la dependencia de <b>google-play-service-maps</b>
               en Project Structure File/Project Structure/Dependencies, selecionamos +/Library Dependency <br>
@@ -150,7 +150,7 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en febrero 21, 2021 by
-            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
           </div>
         </div>
 
@@ -172,10 +172,10 @@
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
             <li class="page-item">
-              <a class="page-link" href="logicas.html">&larr; Anterior</a>
+              <a class="page-link" href="logicas.html" class="text-info">&larr; Anterior</a>
             </li>
             <li class="page-item">
-              <a class="page-link" href="sqlite.html">Siguiente &rarr;</a>
+              <a class="page-link" href="sqlite.html" class="text-info">Siguiente &rarr;</a>
             </li>
           </ul>
   
@@ -205,23 +205,23 @@
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#tt1">habilitar Fragment</a>
+                      <a href="#tt1" class="text-info" >habilitar Fragment</a>
                     </li>
                     <li>
-                      <a href="#">--</a>
+                      <a href="#" class="text-info">--</a>
                     </li>
                     <li>
-                      <a href="#">--</a>
+                      <a href="#" class="text-info">--</a>
                     </li>
                   </ul>
                 </div>
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">--</a>
+                      <a href="#" class="text-info">--</a>
                     </li>
                     <li>
-                      <a href="#">--</a>
+                      <a href="#" class="text-info">--</a>
                     </li>
                   
                   </ul>
