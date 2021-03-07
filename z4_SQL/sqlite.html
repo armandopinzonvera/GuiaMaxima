@@ -122,26 +122,49 @@
                         <h3 class="card-title">Sentencias consulta</h3>
                         <p class="card-text">
                          Para ver las sentencias de creacion de las tablas, se emplea un comando generico:<br> 
-                            <code class="text-dark">SELECT * FROM sqlite_master WHERE type = "table"</code><br>
+                            <code ><b class="text-success">SELECT</b> * <b class="text-success">FROM</b> sqlite_master <b class="text-success">WHERE</b> type = "table"</code><br>
                             A lo cual nos genera la siguiente respuesta:<br>
 
                         </p>
 
                         <img class="card-img-top" src="IMG/SQLite/ql6.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">El siguiente vinculo (Código de colores) nos direcciona a
-                            <i>android-codelab</i>,
-                            en donde encontramos el recurso para copiar y pegar en el archivo colors.xml</p>
+                        <p class="card-text">para ver la informacion de dos tablas unidad por sus <b>PRIMARY KEY</b> y <b>FOREIGN KEY</b>, 
+                            Utilizamos los comandos <b>JOIN</b>, <b>ON</b>.<br>
+                            <code><b class="text-success">SELECT</b> * <b class="text-success">FROM</b> tabla1<br>
+                                <b class="text-success">JOIN</b> tabla2<br>
+                                <b class="text-success">ON</b> tabla1.tb2id <b class="text-success">=</b> tabla2.id</code><br>
+                        </p>
 
                         <p></p>
-                        <a target="blank" class="text-info"
-                            href="https://codelabs.developers.google.com/codelabs/android-training-support-libraries/index.html?index=..%2F..android-training#3"
-                            class="btn btn-primary">Codigo de colores &rarr;</a>
+                        <img class="card-img-top" src="IMG/SQLite/ql7.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                            Cabe resaltar que a diferencia de la creacion de tablas, en donde el relacionamiento
+                            se hace desde el elementos unico <code class="text-dark"><i>especie &lt; track &lt; transecto &lt; proyecto</i></code>.<br>
+                            cuando hacemos consultas, se debe contruir la sentencia en el sentido contrario, de manera que para saber cuantas
+                            especies hay en un <i>track</i>, consultamos desde el Track<br>
+                                                      
+
+
+                        </p>
+                        <h4 class="card-title">Sentencias consulta</h4>
+                        <p class="card-text">
+                                <li><B>ORDER BY</B> para ordenar el conjunto de resultados</li> 
+                                <li><B>DISTINCT</B> - </li> 
+                                <li><B>WHERE</B> - </li>
+                                <li><B>LIMIT</B> - </li>
+                                <li><B>INNER JOIN</B> - </li>
+                                <li><B>GROUP BY</B> - </li>
+                                <li><B>HAVING</B> - </li>
+                        </p>
+
+                     
                     </div>
 
 
                     <div class="card-footer text-muted">
-                        Posted on Agosto 12, 2020 by
+                        Publicado en marzo 6, 2021 by
                         <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
