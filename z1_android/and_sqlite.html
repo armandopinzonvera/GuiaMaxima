@@ -93,38 +93,38 @@
            
            
            
-              <pre class="pre">
-              <code>
-                public class UtilidadesSQLite  {
+              <pre class="pre-scrollable">
+              <code class="lenguage-html" data-lang="html">
+public class UtilidadesSQLite  {
 
 
-                  public static final String DDBB_NAME="DDBB_tas";
+  public static final String DDBB_NAME="DDBB_tas";
               
               
-                  //////////  tabla transecto  /////////////
+  //////////  tabla transecto  /////////////
               
-                  public static final String TABLA_TRANSECTO = "tabla_transecto";
-                  public static final String ID_TRANSECTO = "id_transecto";
-                  public static final String FK_TRACK = "fk_track";
+  public static final String TABLA_TRANSECTO = "tabla_transecto";
+  public static final String ID_TRANSECTO = "id_transecto";
+  public static final String FK_TRACK = "fk_track";
               
-                  public static final String CREAR_TABLA_TRANSECTO = "CREATE TABLE "
-                          +TABLA_TRANSECTO+" ("
-                          +ID_TRANSECTO+" TEXT PRIMARY KEY, "
-                          +FK_TRACK+" TEXT )";
-              
-              
-                  //////////  tabla proyecto  /////////////
-              
-                  public static final String TABLA_PROYECTO = "tabla_proyecto";
-                  public static final String NOMBRE_PROYECTO = "nombre_proyecto";
-                  public static final String FK_TRANSECTO = "fk_transecto";
+  public static final String CREAR_TABLA_TRANSECTO = "CREATE TABLE "
+          +TABLA_TRANSECTO+" ("
+          +ID_TRANSECTO+" TEXT PRIMARY KEY, "
+          +FK_TRACK+" TEXT )";
               
               
-                  public static final String CREAR_TABLA_PROYECTO = "CREATE TABLE "
-                          +TABLA_PROYECTO+" ("
-                          +NOMBRE_PROYECTO+" TEXT, "
-                          +FK_TRANSECTO+" TEXT, FOREIGN KEY("+FK_TRANSECTO+") REFERENCES "+TABLA_TRANSECTO+"( "+ID_TRANSECTO+") )";
-                }           
+  //////////  tabla proyecto  /////////////
+              
+  public static final String TABLA_PROYECTO = "tabla_proyecto";
+  public static final String NOMBRE_PROYECTO = "nombre_proyecto";
+  public static final String FK_TRANSECTO = "fk_transecto";
+              
+              
+   public static final String CREAR_TABLA_PROYECTO = "CREATE TABLE "
+            +TABLA_PROYECTO+" ("
+           +NOMBRE_PROYECTO+" TEXT, "
+          +FK_TRANSECTO+" TEXT, FOREIGN KEY("+FK_TRANSECTO+") REFERENCES "+TABLA_TRANSECTO+"( "+ID_TRANSECTO+") )";
+}           
           </code>
           </pre>
            
@@ -194,7 +194,7 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en Agosto 27, 2020 by
-            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
           </div>
         </div>
 
@@ -235,7 +235,7 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en Agosto 29, 2020 por
-            <a href="https://github.com/armandopinzonvera">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
           </div>
         </div>
 
@@ -268,44 +268,44 @@
             </p>
             <img class="card-img-top" src="IMG/SQLite/sc2.png" alt="Card image cap">
             <p class="card-text"></p>
-              <pre>
+              <pre class="pre-scrollable">
                   <code>
-                    public class Continuar extends AppCompatActivity {
+    public class Continuar extends AppCompatActivity {
 
-                      EditText et_c_nombreproyecto;
-                      TextView tv_c_transecto, tv_c_sumaTransecto;
-                      ConexionSQLite conexionSQLite;
+      EditText et_c_nombreproyecto;
+      TextView tv_c_transecto, tv_c_sumaTransecto;
+      ConexionSQLite conexionSQLite;
                   
-                      @Override
-                      protected void onCreate(Bundle savedInstanceState) {
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
                           super.onCreate(savedInstanceState);
                           setContentView(R.layout.activity_continuar);
                   
-                          conexionSQLite = new ConexionSQLite(getApplicationContext(), UtilidadesSQLite.DDBB_NAME, null, 1 );
+          conexionSQLite = new ConexionSQLite(getApplicationContext(), UtilidadesSQLite.DDBB_NAME, null, 1 );
                   
-                          et_c_nombreproyecto =  findViewById(R.id.et_c_nombreProyecto);
-                          tv_c_transecto = findViewById(R.id.tv_c_transecto);
-                          tv_c_sumaTransecto = findViewById(R.id.tv_c_sumaTransecto);
+          et_c_nombreproyecto =  findViewById(R.id.et_c_nombreProyecto);
+          tv_c_transecto = findViewById(R.id.tv_c_transecto);
+          tv_c_sumaTransecto = findViewById(R.id.tv_c_sumaTransecto);
                   
-                      }
+      }
                   
-                      public void buscar(View view) {
-                          SQLiteDatabase db = conexionSQLite.getReadableDatabase();
-                          String [] parametros = {et_c_nombreproyecto.getText().toString()};
-                          String[] campos = {UtilidadesSQLite.FK_TRANSECTO};
+      public void buscar(View view) {
+          SQLiteDatabase db = conexionSQLite.getReadableDatabase();
+          String [] parametros = {et_c_nombreproyecto.getText().toString()};
+          String[] campos = {UtilidadesSQLite.FK_TRANSECTO};
                   
-                          try {
-                              Cursor cursor =  db.query(UtilidadesSQLite.TABLA_PROYECTO, campos, UtilidadesSQLite.NOMBRE_PROYECTO+"=?",
-                                      parametros, null, null, null );
-                              cursor.moveToFirst();
-                              tv_c_transecto.setText(cursor.getString(0));
+          try {
+              Cursor cursor =  db.query(UtilidadesSQLite.TABLA_PROYECTO, campos, UtilidadesSQLite.NOMBRE_PROYECTO+"=?",
+                      parametros, null, null, null );
+              cursor.moveToFirst();
+              tv_c_transecto.setText(cursor.getString(0));
                   
-                              cursor.close();
-                          } catch (Exception e) {
-                              Toast.makeText(this, "", Toast.LENGTH_SHORT).show();;
-                              et_c_nombreproyecto.setText("");
-                          }
-                      }
+              cursor.close();
+           } catch (Exception e) {
+              Toast.makeText(this, "", Toast.LENGTH_SHORT).show();;
+              et_c_nombreproyecto.setText("");
+          }
+      }
 
                   </code>
               </pre>
@@ -315,7 +315,7 @@
           </div>
           <div class="card-footer text-muted">
             Publicado en febrero 19, 2020 por
-            <a href="https://github.com/armandopinzonvera" target="blank">Armando Pinzon</a>
+            <a href="https://github.com/armandopinzonvera" target="blank" class="text-info">Armando Pinzon</a>
           </div>
         </div>
 
@@ -362,7 +362,7 @@
     </div>
     <div class="card-footer text-muted">
       Publicado en febrero 19, 2020 por
-      <a href="https://github.com/armandopinzonvera" target="blank">Armando Pinzon</a>
+      <a href="https://github.com/armandopinzonvera" target="blank" class="text-info">Armando Pinzon</a>
     </div>
   </div>
 
@@ -454,7 +454,7 @@ private void spinnerlist() {
     </div>
     <div class="card-footer text-muted">
       Publicado en febrero 23, 2021 por
-      <a href="https://github.com/armandopinzonvera" target="blank">Armando Pinzon</a>
+      <a href="https://github.com/armandopinzonvera" target="blank" class="text-info">Armando Pinzon</a>
     </div>
   </div>
 
@@ -503,20 +503,20 @@ private void spinnerlist() {
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#tt1">crear BBDD</a>
+                    <a href="#tt1" class="text-info">crear BBDD</a>
                   </li>
                   <li>
-                    <a href="#tt2">Verificar SQLiteAdmin</a>
+                    <a href="#tt2" class="text-info">Verificar SQLiteAdmin</a>
                   </li>
                   <li>
-                    <a href="#tt3">Consultar SQLite</a>
+                    <a href="#tt3" class="text-info">Consultar SQLite</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#tt4">Agregar valores a tabla desde otra ubicacion</a>
+                    <a href="#tt4" class="text-info">Agregar valores a tabla desde otra ubicacion</a>
                   </li>
                   <li>
                     <a href="#">--</a>

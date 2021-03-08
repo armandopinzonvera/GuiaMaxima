@@ -155,7 +155,7 @@ sup {
 }
 
 a {
-  color: #bd5d38;
+  color: #1c48d6;
   text-decoration: none;
   background-color: transparent;
 }
@@ -500,7 +500,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #e83e8c;
+  color: #02531d;
   word-wrap: break-word;
 }
 a > code {
@@ -524,7 +524,7 @@ pre {
   display: block;
   font-size: 87.5%;
   color: #212529;
-  background: rgb(209, 213, 245);
+  background: rgb(223, 223, 226);
 }
 pre code {
   font-size: inherit;
