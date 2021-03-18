@@ -174,16 +174,44 @@
                 <div class="card mb-4">
 
                     <div class="card-body">
-                        <h2 class="card-title">Terminal windows y version java</h2>
-                        <p class="card-text">Para abrir el termina se debe hacer la combinacion de teclas <b>Windows +
-                                r</b> y parece la ventana ejecutar, en donde escribios <b>cmd</b> y damos a enter </p>
+                        <h3 class="card-title">Manejar desde Consola</h3>
+                        <p class="card-text">
+                            Despues de hacer el proceso de instalacion, creamos una carpeta donde vamos a guardar la BBDD,
+                             abrimos la consola de windows <b>(windows + r)</b> - <b>cmd + enter</b>; nos dirigimos a la carpeta de interes 
+                             mediante los comandos: <br>
+                             - <b>dir</b>: nos muestra los archivos y donde nos encontramos.<br>
+                             - <b>cd [destino] </b>: nos conduce al directorio de interes.<br>
+                             - <b>cd /</b>: nos lleva al inicio de la ruta en el Disco.<br>
+                             - <b>cd ../</b>: regresamos un directorio atras.<br>
+                             - <b>cls</b>: limpiar pantalla.<br>
+                             - <b>mkdir [nombre_carpeta]</b>: crea una carpeta.<br>
+                             - <b>del [nombre_archivo]</b>: elimina un archivo.<br>
+                             - <b>rmdir [nombre_carpeta]</b>: Elimina un directorio, solo si esta vacio.<br>  
+                            Cuando estemos en el directorio de interes, escribimos en la consola: <br>
+                              <b>sqlite3 database.db</b>>
+                            con esto se crea una base de datos, pero no se vera en la carpeta, hasta que trabajemos
+                            con ella, para eso, la consultamos:
+                            <b>.databases</b><br>
+                            ahora si revisamos nuevamente en la carpeta podemos ver la base de datos,  
 
-                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd.png" alt="Card image cap">
+                        </p>
+
+                        <img class="card-img-top" src="IMG/SQLite/ql8.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">Para saber la version de java indicamos: <b>java -version</b></p>
+                        <p class="card-text">
+                            Tal cual como esta, la base de datos no contiene nada, para crearle una tabla, seguidamente escribimos: 
+                            <b>create table [nombre_tabla]</b>, es de aclarar que esa sentencia esta incompleta, por lo cual en  la Consola
+                            se nos muestra <b>..></b> para colocar la informacion faltante: <b>(id int primary key);</b>
+                        </p>
                         <p></p>
-                        <img class="card-img-top" src="IMG/CONFIGURACION/cmd2.png" alt="Card image cap">
+                        <img class="card-img-top" src="IMG/SQLite/ql9.png" alt="Card image cap">
                         <p></p>
+                        <p class="card-text">
+                           Podemos verificar la presencia de la nueva tabla con el comando <b>.tables</b>, para salir escribimos <b>.exit</b> y para 
+                           abrir esta u otra base de datos, estando en la carpeta, escribimos: <b>sqlite3 [nombre_bd]</b>
+                        </p>
+
+
 
                     </div>
 
