@@ -24,7 +24,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary4 fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">SQLite</span>
-            <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />  </a></span>
+            <span class="d-none d-lg-block"><a class="kkk" href="../index.html"> <img
+                        class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../IMG/home.png" alt="" />
+                </a></span>
 
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -36,8 +38,8 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="mySQL.html">mySQL <span
                             class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="instancias.html">postgres</a></li>
-                
-               
+
+
             </ul>
         </div>
     </nav>
@@ -64,43 +66,55 @@
 
                     <div class="card-body">
                         <h3 class="card-title">Instalar tools<br>
-                        en Windows </h3>
+                            en Windows </h3>
 
                         <p class="card-text">
-                           Se debe descargar la carpeta de instalacion <a href="https://www.sqlite.org/download.html" class="text-info" target="blank">sqlite-tool-win32-x86</a> que se encuentra en el 
-                           apartado <b>Precompiled Binaries for Windows</b>, teniendo presente que el archivo dice: <b>tools</b> y lo descomprimimos
-                           dentro de una carpeta en donde se generaran tres archivos.
-                            
+                            Se debe descargar la carpeta de instalacion <a href="https://www.sqlite.org/download.html"
+                                class="text-info" target="blank">sqlite-tool-win32-x86</a> que se encuentra en el
+                            apartado <b>Precompiled Binaries for Windows</b>, teniendo presente que el archivo dice:
+                            <b>tools</b> y lo descomprimimos
+                            dentro de una carpeta en donde se generaran tres archivos.
+
                         </p>
                         <p class="card-text"></p>
                         <img class="card-img-top" src="IMG/SQLite/ql1.png" alt="Card image cap">
                         <p></p>
 
                         <p class="card-text">
-                            Para ejecutar los archivos, tenemos que abrir la consola de window, mediante <b>shift + C|D</b>, seleccionamos la opcion de 
+                            Para ejecutar los archivos, tenemos que abrir la consola de window, mediante <b>shift +
+                                C|D</b>, seleccionamos la opcion de
                             <b>abrir ventana de PowerShell aqui</b>
                         </p>
                         <img class="card-img-top" src="IMG//SQLite/ql2.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text"> 
-                            en la ventana de <b>PowerShell</b> primero nos ubicamos en la carpeta donde se encuentran nuestros archivos,
-                            utilizando los comandos <b>ls, cd</b>; o pondemos hacer la apertura del <i>powerShell</i> desde la carpeta.<br>
-                            ya estando alli ubicados, escribimos <b>.\sqlite3</b>, a lo cual, aparece la version del software y otros mensajes
+                        <p class="card-text">
+                            en la ventana de <b>PowerShell</b> primero nos ubicamos en la carpeta donde se encuentran
+                            nuestros archivos,
+                            utilizando los comandos <b>ls, cd</b>; o pondemos hacer la apertura del <i>powerShell</i>
+                            desde la carpeta.<br>
+                            ya estando alli ubicados, escribimos <b>.\sqlite3</b>, a lo cual, aparece la version del
+                            software y otros mensajes
                         </p>
                         <img class="card-img-top" src="IMG/SQLite/ql3.png" alt="Card image cap">
                         <p></p>
                         <p class="card-text">
-                            Para tener acceso a la carpeta desde cualquier lugar del pc, creamos una carpeta en <b>Disco local(C:)</b>, en este caso 
-                            llamamos <i>src</i>, en ella pegamos la carpeta que contiene los tres archivos, copiamos la direccion: <i>C:\src\sqlite-tools-win32-x86-3340100</i><br>
-                            luego vamos a <b>Este Equipo / propiedades</b> y en <b>configuracion avanzada del sistema</b> en <b>Opciones avanzada /variables de entorno</b>, damos doble click 
-                            en la palabra <b>Path</b> que se encuentra en un listado de variables; a lo cual se abre una nueva ventana.<br>
-                            damo click en el boton <b>nuevo</b>, se abre un espacio en el listado, donde pegamos la direccion que teniamos y luego damos en aceptar en todo.
+                            Para tener acceso a la carpeta desde cualquier lugar del pc, creamos una carpeta en <b>Disco
+                                local(C:)</b>, en este caso
+                            llamamos <i>src</i>, en ella pegamos la carpeta que contiene los tres archivos, copiamos la
+                            direccion: <i>C:\src\sqlite-tools-win32-x86-3340100</i><br>
+                            luego vamos a <b>Este Equipo / propiedades</b> y en <b>configuracion avanzada del
+                                sistema</b> en <b>Opciones avanzada /variables de entorno</b>, damos doble click
+                            en la palabra <b>Path</b> que se encuentra en un listado de variables; a lo cual se abre una
+                            nueva ventana.<br>
+                            damo click en el boton <b>nuevo</b>, se abre un espacio en el listado, donde pegamos la
+                            direccion que teniamos y luego damos en aceptar en todo.
 
                         </p>
                         <img class="card-img-top" src="IMG/SQLite/ql4.png" alt="Card image cap">
                         <p></p>
                         <p class="card-text">
-                            ahora si abrimos la consola de systema <b>windows + r : cmd</b> y escrimos el comando <b>sqlite3</b> ya tenemos acceso al software
+                            ahora si abrimos la consola de systema <b>windows + r : cmd</b> y escrimos el comando
+                            <b>sqlite3</b> ya tenemos acceso al software
                         </p>
                         <img class="card-img-top" src="IMG/SQLite/ql5.png" alt="Card image cap">
 
@@ -121,15 +135,16 @@
                     <div class="card-body">
                         <h3 class="card-title">Sentencias consulta</h3>
                         <p class="card-text">
-                         Para ver las sentencias de creacion de las tablas, se emplea un comando generico:<br> 
-                            <code ><b class="text-success">SELECT</b> * <b class="text-success">FROM</b> sqlite_master <b class="text-success">WHERE</b> type = "table"</code><br>
+                            Para ver las sentencias de creacion de las tablas, se emplea un comando generico:<br>
+                            <code><b class="text-success">SELECT</b> * <b class="text-success">FROM</b> sqlite_master <b class="text-success">WHERE</b> type = "table"</code><br>
                             A lo cual nos genera la siguiente respuesta:<br>
 
                         </p>
 
                         <img class="card-img-top" src="IMG/SQLite/ql6.png" alt="Card image cap">
                         <p></p>
-                        <p class="card-text">para ver la informacion de dos tablas unidad por sus <b>PRIMARY KEY</b> y <b>FOREIGN KEY</b>, 
+                        <p class="card-text">para ver la informacion de dos tablas unidad por sus <b>PRIMARY KEY</b> y
+                            <b>FOREIGN KEY</b>,
                             Utilizamos los comandos <b>JOIN</b>, <b>ON</b>.<br>
                             <code><b class="text-success">SELECT</b> * <b class="text-success">FROM</b> tabla1<br>
                                 <b class="text-success">JOIN</b> tabla2<br>
@@ -141,25 +156,27 @@
                         <p></p>
                         <p class="card-text">
                             Cabe resaltar que a diferencia de la creacion de tablas, en donde el relacionamiento
-                            se hace desde el elementos unico <code class="text-dark"><i>especie &lt; track &lt; transecto &lt; proyecto</i></code>.<br>
-                            cuando hacemos consultas, se debe contruir la sentencia en el sentido contrario, de manera que para saber cuantas
+                            se hace desde el elementos unico <code
+                                class="text-dark"><i>especie &lt; track &lt; transecto &lt; proyecto</i></code>.<br>
+                            cuando hacemos consultas, se debe contruir la sentencia en el sentido contrario, de manera
+                            que para saber cuantas
                             especies hay en un <i>track</i>, consultamos desde el Track<br>
-                                                      
+
 
 
                         </p>
                         <h4 class="card-title">Sentencias consulta</h4>
                         <p class="card-text">
-                                <li><B>ORDER BY</B> para ordenar el conjunto de resultados</li> 
-                                <li><B>DISTINCT</B> - </li> 
-                                <li><B>WHERE</B> - </li>
-                                <li><B>LIMIT</B> - </li>
-                                <li><B>INNER JOIN</B> - </li>
-                                <li><B>GROUP BY</B> - </li>
-                                <li><B>HAVING</B> - </li>
+                            <li><B>ORDER BY</B> para ordenar el conjunto de resultados</li>
+                            <li><B>DISTINCT</B> - </li>
+                            <li><B>WHERE</B> - </li>
+                            <li><B>LIMIT</B> - </li>
+                            <li><B>INNER JOIN</B> - </li>
+                            <li><B>GROUP BY</B> - </li>
+                            <li><B>HAVING</B> - </li>
                         </p>
 
-                     
+
                     </div>
 
 
@@ -176,39 +193,45 @@
                     <div class="card-body">
                         <h3 class="card-title">Manejar desde Consola</h3>
                         <p class="card-text">
-                            Despues de hacer el proceso de instalacion, creamos una carpeta donde vamos a guardar la BBDD,
-                             abrimos la consola de windows <b>(windows + r)</b> - <b>cmd + enter</b>; nos dirigimos a la carpeta de interes 
-                             mediante los comandos: <br>
-                             - <b>dir</b>: nos muestra los archivos y donde nos encontramos.<br>
-                             - <b>cd [destino] </b>: nos conduce al directorio de interes.<br>
-                             - <b>cd /</b>: nos lleva al inicio de la ruta en el Disco.<br>
-                             - <b>cd ../</b>: regresamos un directorio atras.<br>
-                             - <b>cls</b>: limpiar pantalla.<br>
-                             - <b>mkdir [nombre_carpeta]</b>: crea una carpeta.<br>
-                             - <b>del [nombre_archivo]</b>: elimina un archivo.<br>
-                             - <b>rmdir [nombre_carpeta]</b>: Elimina un directorio, solo si esta vacio.<br>  
+                            Despues de hacer el proceso de instalacion, creamos una carpeta donde vamos a guardar la
+                            BBDD,
+                            abrimos la consola de windows <b>(windows + r)</b> - <b>cmd + enter</b>; nos dirigimos a la
+                            carpeta de interes
+                            mediante los comandos: <br>
+                            - <b>dir</b>: nos muestra los archivos y donde nos encontramos.<br>
+                            - <b>cd [destino] </b>: nos conduce al directorio de interes.<br>
+                            - <b>cd /</b>: nos lleva al inicio de la ruta en el Disco.<br>
+                            - <b>cd ../</b>: regresamos un directorio atras.<br>
+                            - <b>cls</b>: limpiar pantalla.<br>
+                            - <b>mkdir [nombre_carpeta]</b>: crea una carpeta.<br>
+                            - <b>del [nombre_archivo]</b>: elimina un archivo.<br>
+                            - <b>rmdir [nombre_carpeta]</b>: Elimina un directorio, solo si esta vacio.<br>
                             Cuando estemos en el directorio de interes, escribimos en la consola: <br>
-                              <b>sqlite3 database.db</b>>
+                            <b>sqlite3 database.db</b>>
                             con esto se crea una base de datos, pero no se vera en la carpeta, hasta que trabajemos
                             con ella, para eso, la consultamos:
                             <b>.databases</b><br>
-                            ahora si revisamos nuevamente en la carpeta podemos ver la base de datos,  
+                            ahora si revisamos nuevamente en la carpeta podemos ver la base de datos.
 
                         </p>
 
                         <img class="card-img-top" src="IMG/SQLite/ql8.png" alt="Card image cap">
                         <p></p>
                         <p class="card-text">
-                            Tal cual como esta, la base de datos no contiene nada, para crearle una tabla, seguidamente escribimos: 
-                            <b>create table [nombre_tabla]</b>, es de aclarar que esa sentencia esta incompleta, por lo cual en  la Consola
+                            Tal cual como esta, la base de datos no contiene nada, para crearle una tabla, seguidamente
+                            escribimos:
+                            <b>create table [nombre_tabla]</b>, es de aclarar que esa sentencia esta incompleta, por lo
+                            cual en la Consola
                             se nos muestra <b>..></b> para colocar la informacion faltante: <b>(id int primary key);</b>
                         </p>
                         <p></p>
                         <img class="card-img-top" src="IMG/SQLite/ql9.png" alt="Card image cap">
                         <p></p>
                         <p class="card-text">
-                           Podemos verificar la presencia de la nueva tabla con el comando <b>.tables</b>, para salir escribimos <b>.exit</b> y para 
-                           abrir esta u otra base de datos, estando en la carpeta, escribimos: <b>sqlite3 [nombre_bd]</b>
+                            Podemos verificar la presencia de la nueva tabla con el comando <b>.tables</b>, para salir
+                            escribimos <b>.exit</b> y para
+                            abrir esta u otra base de datos, estando en la carpeta, escribimos: <b>sqlite3
+                                [nombre_bd]</b>
                         </p>
 
 
@@ -217,10 +240,72 @@
 
 
                     <div class="card-footer text-muted">
-                        Posted on Septiembre 9, 2020 by
+                        Creado en marzo 17, 2021 por
                         <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
                     </div>
                 </div>
+
+                <!-- Blog Post -->
+
+                <div class="card mb-4">
+
+                    <div class="card-body">
+                        <h3 class="card-title">Comandos </h3>
+                        <p class="card-text">
+                            Lo primero es dejar claro que los software para administracion de BBDD sqlite, como 
+                            <i>SQLiteStudio</i> o <i>SQLiteAdmin</i> Tienen limitaciones en la ejecucion de comandos,
+                            que solo pueden ser llevados a cabo desde la consola; como el caso de los <b class="text-success">dot-commands</b>.<br>
+                            Adicionalmente estos softwares crean las BBDD y tablas a travez de wigets y no de comandos.<br>
+                            por otro lado, siendo que SQLite es embebido, genera las bases de datos solo sentenciandolas y no 
+                            con el comando CREATE como se define en SQL.<br>
+                            
+                            <ul>
+                              <li><b class="text-dark">sqlite3  [nombreDDBB].db</b>: funciona unicamente en la consola, <b class="text-success">crea o abre</b> una base de datos con ese nombre, 
+                                ojo: no se observa en carpeta hasta que se consulte.</li>      
+                              <li><b class="text-dark">sqlite3</b>: entra al programa, empero bloquea las demas funciones de la ventana de comandos
+                            por lo cual debemos estar en al directorio de interes con antelacion, ademas ejecuta los comandos despues, asi que mejor entrar con el comando anterior</li>
+                              <li><b class="text-dark">.open [nombreBBDD]</b>: funciona si se ejecuto el comando anterior y SQLite esta corriendo
+                              <li><b class="text-dark">.table , .tables</b>: muestra las tablas de la BBDD
+                              <li><b class="text-dark">.schema [nombreTabla]]</b>: muestra la estructura de la tabla
+                              <li><b class="text-dark">.fullschema</b>: muestra la estructura de todas las tablas   
+                              
+                              <li><b class="text-dark">.output [nombreArchivo].txt</b>: crea un archivo que recibira la siguiente consulta
+                              <li><b class="text-dark">.fullschema</b>:
+
+                              <li><b class="text-dark">.exit, .quit</b>: para salir</li> 
+
+                            </ul>                           
+
+                        </p>
+                        <h4>Consulta de datos</h4>                       
+                        <p></p>
+                        <p class="card-text">
+                            La expresion <b>SELECT</b> retorna informacion de consultas, puede retornar el resultado de simples operaciones aritmeticas, 
+                            es la declaracion mas compleja, y se acompaña de otras palabras reservadas para realizar su funcion.<br>
+
+                        </p>
+                        <p></p>
+                        <img class="card-img-top" src="IMG/SQLite/ql9.png" alt="Card image cap">
+                        <p></p>
+                        <p class="card-text">
+                            Podemos verificar la presencia de la nueva tabla con el comando <b>.tables</b>, para salir
+                            escribimos <b>.exit</b> y para
+                            abrir esta u otra base de datos, estando en la carpeta, escribimos: <b>sqlite3
+                                [nombre_bd]</b>
+                        </p>
+
+
+
+                    </div>
+
+
+                    <div class="card-footer text-muted">
+                        Creado en marzo 17, 2021 por
+                        <a href="https://github.com/armandopinzonvera" class="text-info">Armando Pinzon</a>
+                    </div>
+                </div>
+
+
 
 
                 <!-- Pagination -->
