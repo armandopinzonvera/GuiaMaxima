@@ -344,17 +344,89 @@
         <!-- Blog Post -->
 
         <!-- Blog Post -->
-        <!--
+        
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            
             <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+              <h3 class="card-title">Permiso Location</h3>
+              <p class="card-text">Lo primero es colocar una comprovacion en el activity en donde se ejecutara la 
+                ubicacion que verifique si ya la aplicacion cuenta con los permisos, se puede colocar dentro de la 
+                sobreescritura del metodo <b>onStart()</b>, para que verifique cuando arranque el activity, o en el metodo 
+                que inicia. 
+              </p>
+              <pre><code>
+ if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }else{
+            return false;
+        } </code></pre>
+
+                 <img class="card-img-top" src="IMG/LOCATION/az1.png" alt="Card image cap">
+                 <p class="card-text"> </p>
+                 <img class="card-img-top" src="IMG/LOCATION/az2.png" alt="Card image cap">
+                 <p class="card-text"> </p>
+                 <p class="card-text">de manera que si retorna true, podemos seguir con la Ubicacion, en caso que no, seguimos con el metodo
+                  que pide los permisos
+                </p>
+                <pre class="pre-scrollable"><code>
+  public void solicitarPermisoLocation(int requestCode){
+
+        this.LOCATION_REQUEST_CODE = requestCode;
+
+        if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission.ACCESS_FINE_LOCATION)){
+
+                Log.d("", "        YOU SHOULD SHOW A ALERT DIALOG      ");
+                ActivityCompat.requestPermissions((Activity)context, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            }else{
+                ActivityCompat.requestPermissions((Activity)context, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            }
+        }
+    }
+    </code></pre>
+  
+  
+                   <img class="card-img-top" src="IMG/LOCATION/az3.png" alt="Card image cap">
+                   <p class="card-text"> 
+Este ultimo metodo, introduce el codigo <b> LOCATION_REQUEST_CODE</b>, el cual es un integer que es validado por el metodo
+<b>onRequestPermissionsResult()</b>
+                   </p>
+<pre class="pre-scrollable"><code>
+  public boolean verificacionFinalPermisoLocation( int requestCode, int[] grantResult){
+    if(requestCode == LOCATION_REQUEST_CODE){
+        if(grantResult.length > 0 && grantResult[0] == PackageManager.PERMISSION_DENIED){
+            return true;
+        }
+    }else{
+        return false;
+    }
+
+    return false;
+}
+    </code></pre>
+
+
+    <pre class="pre-scrollable"><code>
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+      if(permisoLocation.verificacionFinalPermisoLocation(requestCode, grantResults)){
+
+          Toast.makeText(this, "      PERMISO NEGADO     ", Toast.LENGTH_SHORT).show();
+          Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+          startActivity(intent);
+          
+      } else {
+          pasoaVistatransecto();
+        }
+    }
+    </code></pre>
+              
             </div>
             <div class="card-footer text-muted">
-              Posted on January 1, 2020 by
-              <a href="#">Start Bootstrap</a>
+              Publicado en abril 4, 2021 por
+              <a href="#">Armando Pinzon</a>
             </div>
           </div>
         -->

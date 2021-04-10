@@ -136,103 +136,102 @@
             </p>
             <p class="card-text"> Esta es la clase con el servicio<br>
 
-              <pre class="pre">  public class Service_Location extends Service {
+              <pre class="pre-scrollable"> 
+                <code class="text-dark">
+ public class Service_Location extends Service {
 
-                        static final int LOCATION_SERVICE_ID = 175;
-                        static final String ACTION_START_LOCATION_SERVICE = "Iniciar Servicio de localizacion";
-                        static final String ACTION_STOP_LOCATION_SERVICE = "Finalizar servicio de localizacion";
+         static final int LOCATION_SERVICE_ID = 175;
+         static final String ACTION_START_LOCATION_SERVICE = "Iniciar Servicio de localizacion";
+         static final String ACTION_STOP_LOCATION_SERVICE = "Finalizar servicio de localizacion";
                     
-                        private LocationCallback locationCallback = new LocationCallback() {
+        private LocationCallback locationCallback = new LocationCallback() {
                     
-                            @Override
-                            public void onLocationResult(LocationResult locationResult) {
-                                super.onLocationResult(locationResult);
-                                if (locationResult != null && locationResult.getLastLocation() != null) {
-                                    double latitude = locationResult.getLastLocation().getLatitude();
-                                    double longitude = locationResult.getLastLocation().getLongitude();
+            @Override
+             public void onLocationResult(LocationResult locationResult) {
+                 super.onLocationResult(locationResult);
+                 if (locationResult != null && locationResult.getLastLocation() != null) {
+                     double latitude = locationResult.getLastLocation().getLatitude();
+                     double longitude = locationResult.getLastLocation().getLongitude();
                     
-                                    MainActivity.putValue(latitude);
-                                    Log.d("LOCATION UPDATE", latitude + ", "+longitude);
-                                }
-                            }
-                        };
+                     MainActivity.putValue(latitude);
+                     Log.d("LOCATION UPDATE", latitude + ", "+longitude);
+                }
+             }
+        };
                     
-                        @Nullable
-                        @Override
-                        public IBinder onBind(Intent intent) {
-                           throw new UnsupportedOperationException("Aun no esta implementado");
-                        }
+         @Nullable
+         @Override
+         public IBinder onBind(Intent intent) {
+            throw new UnsupportedOperationException("Aun no esta implementado");
+         }
                     
-                        private void startLocationService(){
-                            String channelId= "Notificacion de canal de Localizacion";
-                            NotificationManager notificationManager =
-                                    (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                            Intent resultIntent = new Intent();
-                            PendingIntent pendingIntent = PendingIntent.getActivity(
-                                    getApplicationContext(),
-                                    0,
-                                    resultIntent,
-                                    PendingIntent.FLAG_UPDATE_CURRENT);
-                            NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                                    getApplicationContext(),
-                                    channelId
-                            );
-                            builder.setSmallIcon(R.mipmap.ic_launcher);
-                            builder.setContentTitle("Servicio de Localizacion");
-                            builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-                            builder.setContentText("Corriendo");
-                            builder.setContentIntent(pendingIntent);
-                            builder.setAutoCancel(false);
-                            builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        private void startLocationService(){
+             String channelId= "Notificacion de canal de Localizacion";
+              NotificationManager notificationManager =
+                     (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+             Intent resultIntent = new Intent();
+             PendingIntent pendingIntent = PendingIntent.getActivity(
+                     getApplicationContext(),
+                    0,
+                     resultIntent,
+                     PendingIntent.FLAG_UPDATE_CURRENT);
+             NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                     getApplicationContext(),
+                     channelId
+             );
+             builder.setSmallIcon(R.mipmap.ic_launcher);
+             builder.setContentTitle("Servicio de Localizacion");
+             builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+             builder.setContentText("Corriendo");
+             builder.setContentIntent(pendingIntent);
+            builder.setAutoCancel(false);
+            builder.setPriority(NotificationCompat.PRIORITY_MAX);
                     
-                            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                                if(notificationManager != null
-                                && notificationManager.getNotificationChannel(channelId) == null){
-                                    NotificationChannel notificationChannel = new NotificationChannel(
-                                            channelId,
-                                            "Location Service",
-                                            NotificationManager.IMPORTANCE_HIGH
-                                    );
-                                    notificationChannel.setDescription("Este canal es usado para el servicio de localizacion");
-                                    notificationManager.createNotificationChannel(notificationChannel);
-                                }
-                            }
+             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                  if(notificationManager != null
+                 && notificationManager.getNotificationChannel(channelId) == null){
+                   NotificationChannel notificationChannel = new NotificationChannel(
+                           channelId,
+                          "Location Service",
+         NotificationManager.IMPORTANCE_HIGH
+                   );
+                  notificationChannel.setDescription("Este canal es usado para el servicio de localizacion");
+                  notificationManager.createNotificationChannel(notificationChannel);
+              }
+            }
                     
-                            @SuppressLint("RestrictedApi")
-                            LocationRequest locationRequest = new LocationRequest();
-                            locationRequest.setInterval(4000);
-                            locationRequest.setFastestInterval(2000);
-                            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+           @SuppressLint("RestrictedApi")
+           LocationRequest locationRequest = new LocationRequest();
+           locationRequest.setInterval(4000);
+           locationRequest.setFastestInterval(2000);
+          locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
                     
-                            LocationServices.getFusedLocationProviderClient(this)
-                                    .requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-                            startForeground(LOCATION_SERVICE_ID, builder.build());
-                        }
-                        private void stopLocationService(){
-                            LocationServices.getFusedLocationProviderClient(this).removeLocationUpdates(locationCallback);
-                            stopForeground(true);
-                            stopSelf();
-                        }
+          LocationServices.getFusedLocationProviderClient(this)
+                  .requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+           startForeground(LOCATION_SERVICE_ID, builder.build());
+      }
+      private void stopLocationService(){
+          LocationServices.getFusedLocationProviderClient(this).removeLocationUpdates(locationCallback);
+          stopForeground(true);
+          stopSelf();
+      }
                     
-                        @Override
-                        public int onStartCommand(Intent intent, int flags, int startId) {
-                            if(intent != null){
-                                String action = intent.getAction();
-                                if(action != null){
-                                    if(action.equals(ACTION_START_LOCATION_SERVICE)){
-                                        startLocationService();
-                                    }else if(action.equals(ACTION_STOP_LOCATION_SERVICE)){
-                                        stopLocationService();
-                                    }
-                                }
-                            }
+      @Override
+      public int onStartCommand(Intent intent, int flags, int startId) {
+           if(intent != null){
+               String action = intent.getAction();
+               if(action != null){
+                  if(action.equals(ACTION_START_LOCATION_SERVICE)){
+                      startLocationService();
+                   }else if(action.equals(ACTION_STOP_LOCATION_SERVICE)){
+                       stopLocationService();
+                  }
+              }
+           }
                     
-                            return super.onStartCommand(intent, flags, startId);
-                        }
-                    }
-                    
-                          
-                          </pre>
+           return super.onStartCommand(intent, flags, startId);
+      }
+  }</code> </pre>
 
             </p>
 
@@ -246,7 +245,8 @@
             <p class="card-text"></p>
 
             <p class="card-text"> Este es el Main Activity que recibe, ademas arranca los permisos<br>
-              <pre class="pre"> public class MainActivity extends AppCompatActivity {
+              <pre class="pre-scrollable"> 
+                <code class="text-dark"> public class MainActivity extends AppCompatActivity {
 
                         private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
                         static TextView tvlat;
@@ -340,7 +340,7 @@
                     
                     }
                       
-                           }</pre>
+                           }</code></pre>
             </p>
 
             <img class="card-img-top" src="IMG/SERVICES/sv4.png" alt="Card image cap">
